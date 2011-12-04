@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -10,8 +10,8 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.name %></td>
-    <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Edit site', edit_site_path(site), method: :get %></td>
+    <td><%= button_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
