@@ -40,4 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'  #required for save_and_open_page
+  gem 'mocha'  #for nifty-generator
 end
+
+gem "nifty-generators", :group => :development
