@@ -8,15 +8,6 @@ class SitesController < ApplicationController
     end
   end
 
-  # GET /sites/1
-  def show
-    @site = Site.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
   # GET /sites/new
   def new
     @site = Site.new
@@ -37,7 +28,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        format.html { redirect_to sites_url, notice: 'Site was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -50,7 +41,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
-        format.html { redirect_to @site, notice: 'Site was successfully updated.' }
+        format.html { redirect_to sites_url, notice: 'Site was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
