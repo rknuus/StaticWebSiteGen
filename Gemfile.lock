@@ -158,6 +158,11 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
+    webrat-rspec-rails (0.1.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -179,3 +184,5 @@ DEPENDENCIES
   sqlite3
   turn (= 0.8.2)
   uglifier (>= 1.0.3)
+  webrat
+  webrat-rspec-rails
