@@ -1,4 +1,6 @@
 StaticWebSiteGen::Application.routes.draw do
+  root :to => 'sites#index'
+
   resources :sites
 
   # The priority is based upon order of creation:
