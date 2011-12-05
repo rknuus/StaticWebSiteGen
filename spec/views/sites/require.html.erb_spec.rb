@@ -17,8 +17,8 @@ describe "sites/require.html.erb" do
     rendered.should have_content('MyText')
     rendered.should have_content('Site texts:')
     rendered.should have_button('New site text')
-    # rendered.should have_content('Site files:')
-    # rendered.should have_button('New site file')
+    rendered.should have_content('Site files:')
+    rendered.should have_button('New site file')
     # rendered.should have_button('Close')
   end
 end
