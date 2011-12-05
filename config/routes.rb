@@ -1,4 +1,6 @@
 StaticWebSiteGen::Application.routes.draw do
+  resources :site_texts
+
   root :to => 'sites#index'
 
   resources :sites, :except => [:show] do
