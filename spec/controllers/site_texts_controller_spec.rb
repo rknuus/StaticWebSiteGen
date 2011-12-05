@@ -35,14 +35,6 @@ describe SiteTextsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested site_text as @site_text" do
-      site_text = SiteText.create! valid_attributes
-      get :show, :id => site_text.id
-      assigns(:site_text).should eq(site_text)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new site_text as @site_text" do
       get :new

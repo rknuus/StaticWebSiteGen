@@ -1,7 +1,7 @@
 StaticWebSiteGen::Application.routes.draw do
-  resources :site_texts
-
   root :to => 'sites#index'
+
+  resources :site_texts, :except => [:show]
 
   resources :sites, :except => [:show] do
     member do

@@ -11,10 +11,6 @@ describe SiteTextsController do
       get("/site_texts/new").should route_to("site_texts#new")
     end
 
-    it "routes to #show" do
-      get("/site_texts/1").should route_to("site_texts#show", :id => "1")
-    end
-
     it "routes to #edit" do
       get("/site_texts/1/edit").should route_to("site_texts#edit", :id => "1")
     end
