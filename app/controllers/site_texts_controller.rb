@@ -10,7 +10,8 @@ class SiteTextsController < ApplicationController
 
   # GET /site_texts/new
   def new
-    @site_text = SiteText.new
+    # debugger
+    @site_text = SiteText.new(:site_id => flash[:site_id].to_i)
 
     respond_to do |format|
       format.html # new.html.erb
