@@ -8,15 +8,6 @@ class SiteTextsController < ApplicationController
     end
   end
 
-  # GET /site_texts/1
-  def show
-    @site_text = SiteText.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
   # GET /site_texts/new
   def new
     @site_text = SiteText.new
