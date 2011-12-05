@@ -24,7 +24,7 @@ describe SiteTextsController do
   # SiteText. As you add validations to SiteText, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :content => '&nbsp;' }
   end
 
   describe "GET index" do

@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe SiteText do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be invalid without content" do
+    SiteText.new.valid?.should eq(false)
+  end
 end
