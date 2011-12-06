@@ -7,9 +7,9 @@
 </div>
 
 <h2>Site texts:</h2>
-<%= link_to 'New site text', :action => :new_site_text %>
+<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
 
 <h2>Site files:</h2>
 <%= button_to 'New site file', new_site_path %>
 
-<%= close_button %>
+<%= close_link %>

@@ -1,9 +1,9 @@
 module SitesHelper
-  def cancel_button
-    button_to 'Cancel', sites_path, method: :get
+  def cancel_link
+    link_to 'Cancel', sites_path
   end
 
-  def close_button
-    button_to 'Close', sites_path, method: :get
+  def close_link
+    link_to 'Close', sites_path
   end
 end

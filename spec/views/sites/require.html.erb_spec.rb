@@ -10,15 +10,15 @@ describe "sites/require.html.erb" do
 
   include Capybara::DSL  #FIXME: why this is not done automatically?
 
-  it "renders require site form" do
+  it "renders require page" do
     render
     
     rendered.should have_content('MyString requires')
     rendered.should have_content('MyText')
     rendered.should have_content('Site texts:')
-    rendered.should have_button('New site text')
+    rendered.should have_link('New site text')
     rendered.should have_content('Site files:')
-    rendered.should have_button('New site file')
-    rendered.should have_button('Close')
+    rendered.should have_link('New site file')
+    rendered.should have_link('Close')
   end
 end
