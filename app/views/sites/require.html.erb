@@ -6,10 +6,14 @@
    -->
 </div>
 
-<h2>Site texts:</h2>
-<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
+<div id="site_texts">
+	<h2>Site texts:</h2>
+	<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
+</div>
 
-<h2>Site files:</h2>
-<%= link_to 'New site file', :action => :new_site_file, :id => @site.id %>
+<div id="site_files">
+	<h2>Site files:</h2>
+	<%= link_to 'New site file', :action => :new_site_file, :id => @site.id %>
+</div>
 
 <%= close_link %>
