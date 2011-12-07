@@ -27,8 +27,16 @@ describe SitesController do
       delete("/sites/1").should route_to("sites#destroy", :id => "1")
     end
 
-    # it "routes to #require" do
-    #   get("/sites/1/require").should route_to("sites#require", :id => "1")
-    # end
+    it "routes to #require" do
+      get("/sites/1/require").should route_to("sites#require", :id => "1")
+    end
+
+    it "routes to #new_site_text" do
+      get("/sites/1/new_site_text").should route_to("sites#new_site_text", :id => "1")
+    end
+
+    it "routes to #new_site_file" do
+      get("/sites/1/new_site_file").should route_to("sites#new_site_file", :id => "1")
+    end
   end
 end
