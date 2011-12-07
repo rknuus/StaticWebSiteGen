@@ -10,6 +10,6 @@
 <%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
 
 <h2>Site files:</h2>
-<%= button_to 'New site file', new_site_path %>
+<%= link_to 'New site file', :action => :new_site_file, :id => @site.id %>
 
 <%= close_link %>

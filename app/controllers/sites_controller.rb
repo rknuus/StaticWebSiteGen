@@ -65,8 +65,13 @@ class SitesController < ApplicationController
   
   #GET /sites/1/new_site_text
   def new_site_text
-    # debugger
     flash[:site_id] = params[:id]
     redirect_to new_site_text_path
+  end
+  
+  #GET /sites/1/new_site_file
+  def new_site_file
+    flash[:site_id] = params[:id]
+    redirect_to new_site_file_path
   end
 end

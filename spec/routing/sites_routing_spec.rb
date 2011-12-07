@@ -27,5 +27,8 @@ describe SitesController do
       delete("/sites/1").should route_to("sites#destroy", :id => "1")
     end
 
+    # it "routes to #require" do
+    #   get("/sites/1/require").should route_to("sites#require", :id => "1")
+    # end
   end
 end

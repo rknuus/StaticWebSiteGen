@@ -7,6 +7,7 @@ StaticWebSiteGen::Application.routes.draw do
     member do
       get 'require'
       get 'new_site_text'
+      get 'new_site_file'
     end
   end
 
