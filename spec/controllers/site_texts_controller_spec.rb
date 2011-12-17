@@ -66,7 +66,7 @@ describe SiteTextsController do
 
       it "redirects to the created site_text" do
         post :create, :site_text => valid_attributes
-        response.should redirect_to(SiteText.last)
+        response.should redirect_to(site_texts_url)
       end
     end
 
@@ -108,7 +108,7 @@ describe SiteTextsController do
       it "redirects to the site_text" do
         site_text = SiteText.create! valid_attributes
         put :update, :id => site_text.id, :site_text => valid_attributes
-        response.should redirect_to(site_text)
+        response.should redirect_to(site_texts_url)
       end
     end
 

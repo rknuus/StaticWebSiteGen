@@ -14,6 +14,7 @@ describe "sites/index.html.erb" do
 
   it "renders a list of sites" do
     render
-    rendered.should have_selector("tr>td", :content => "Name".to_s, :count => 2)
+    # rendered.should have_selector("tr>td", :content => "Name".to_s, :count => 2)
+    assert_select "tr>td", :text => "Name".to_s, :count => 2
   end
 end

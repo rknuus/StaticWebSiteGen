@@ -10,8 +10,13 @@ describe "site_texts/edit.html.erb" do
 
   it "renders the edit site_text form" do
     render
+    
+    # save_and_open_page
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    # rendered.should have_selector("form", :action => site_path(@site_text), :method => "post") do |form|
+    #   rendered.should have_tag("input[name=?]", "site_text[site_id]")
+    #   form.should have_selector("textarea#site_text_content", :name => "site_text[content]")
+      
     assert_select "form", :action => site_texts_path(@site_text), :method => "post" do
       assert_select "input#site_text_site_id", :name => "site_text[site_id]"
       assert_select "textarea#site_text_content", :name => "site_text[content]"

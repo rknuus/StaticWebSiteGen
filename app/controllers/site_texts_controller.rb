@@ -29,7 +29,7 @@ class SiteTextsController < ApplicationController
 
     respond_to do |format|
       if @site_text.save
-        format.html { redirect_to @site_text, notice: 'Site text was successfully created.' }
+        format.html { redirect_to site_texts_url, notice: 'Sitet text was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -42,7 +42,7 @@ class SiteTextsController < ApplicationController
 
     respond_to do |format|
       if @site_text.update_attributes(params[:site_text])
-        format.html { redirect_to @site_text, notice: 'Site text was successfully updated.' }
+        format.html { redirect_to site_texts_url, notice: 'Sitet text was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

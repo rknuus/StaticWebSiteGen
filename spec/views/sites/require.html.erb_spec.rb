@@ -8,8 +8,6 @@ describe "sites/require.html.erb" do
   #   ).as_new_record)
   # end
 
-  include Capybara::DSL  #FIXME: why this is not done automatically?
-
   it "renders require page" do
     @site = mock_model(Site, :name => 'MyString', :template => 'MyText')
 
