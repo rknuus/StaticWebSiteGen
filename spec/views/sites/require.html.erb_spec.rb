@@ -13,12 +13,12 @@ describe "sites/require.html.erb" do
 
     render
     
-    rendered.should have_content('MyString requires')
-    rendered.should have_content('MyText')
-    rendered.should have_content('Site texts:')
-    rendered.should have_link('New site text')
-    rendered.should have_content('Site files:')
-    rendered.should have_link('New site file')
-    rendered.should have_link('Close')
+    assert_select 'h1', 'MyString requires'
+    assert_select 'div>p', "Template:\n\tMyText"
+    assert_select 'div>h2', 'Site texts:'
+    assert_select 'div>a', 'New site text'
+    assert_select 'div>h2', 'Site files:'
+    assert_select 'div>a', 'New site file'
+    assert_select 'a', 'Close'
   end
 end
