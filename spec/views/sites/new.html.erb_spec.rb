@@ -11,10 +11,6 @@ describe "sites/new.html.erb" do
   it "renders new site form" do
     render
 
-    # rendered.should have_selector("form", :action => sites_path, :method => "post") do |form|
-    #   form.should have_selector("input#site_name", :name => "site[name]")
-    #   form.should have_selector("textarea#site_template", :name => "site[template]")
-
     assert_select "form", :action => sites_path, :method => "post" do
       assert_select "input#site_name", :name => "site[name]"
       assert_select "textarea#site_template", :name => "site[template]"
