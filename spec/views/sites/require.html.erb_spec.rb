@@ -14,7 +14,8 @@ describe "sites/require.html.erb" do
     render
     
     assert_select 'h1', 'MyString requires'
-    assert_select 'div>p', "Template:\n\tMyText"
+    assert_select 'div>label', 'Template'
+    assert_select 'form>div>textarea', 'MyText'
     assert_select 'div>h2', 'Site texts:'
     assert_select 'div>a', 'New site text'
     assert_select 'div>h2', 'Site files:'

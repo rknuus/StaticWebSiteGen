@@ -1,10 +1,11 @@
 <h1><%= @site.name %> requires</h1>
 
-<div class="template">
-	<p>Template:<br />
-	<%= @site.template %></p>  <!-- FIXME: did not work... text_area :template, @site.template, :disabled => true %>
-   -->
-</div>
+<%= form_for(@site) do |f| %>
+	<div class="field">
+	  <%= f.label :template %><br />
+	  <%= f.text_area :template, :disabled => true %>
+	</div>
+<% end %>
 
 <div id="site_texts">
 	<h2>Site texts:</h2>
