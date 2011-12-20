@@ -12,7 +12,7 @@
 			<table>
 			<% @site.site_texts.each do |site_text| %> <!-- FIXME: use fields_for -->
 				<tr>
-					<td><%= site_text.content %></td>
+					<td><%= truncate(site_text.content, :length => 50) %></td>
 				</tr>
 			<% end %>
 			</table>
