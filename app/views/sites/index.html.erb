@@ -7,12 +7,14 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.name %></td>
     <td><%= link_to 'Edit site', edit_site_path(site), method: :get %></td>
+    <td><%= link_to 'Edit requirements', require_site_path(site), method: :get %></td>
     <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
