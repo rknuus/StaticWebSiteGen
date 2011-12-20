@@ -5,12 +5,22 @@
 	  <%= f.label :template %><br />
 	  <%= f.text_area :template, :disabled => true %>
 	</div>
-<% end %>
 
-<div id="site_texts">
-	<h2>Site texts:</h2>
-	<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
-</div>
+	<div id="site_texts">
+		<h2>Site texts:</h2>
+		<% if @site.site_texts %>
+			<table>
+			<% @site.site_texts.each do |site_text| %> <!-- FIXME: use fields_for -->
+				<tr>
+					<td><%= site_text.content %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %>
+
+		<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
+	</div>
+<% end %>
 
 <div id="site_files">
 	<h2>Site files:</h2>
