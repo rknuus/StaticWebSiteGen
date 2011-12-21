@@ -21,7 +21,7 @@
 			</table>
 		<% end %>
 
-		<%= link_to 'New site text', :action => :new_site_text, :id => @site.id %>
+		<%= link_to 'New site text', new_site_text_path(:site_id => @site) %>
 	</div>
 <% end %>
 
