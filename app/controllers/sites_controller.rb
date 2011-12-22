@@ -63,12 +63,6 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
   end
   
-  #GET /sites/1/new_site_text
-  def new_site_text
-    flash[:site_id] = params[:id]
-    redirect_to new_site_text_path
-  end
-  
   #GET /sites/1/new_site_file
   def new_site_file
     flash[:site_id] = params[:id]
