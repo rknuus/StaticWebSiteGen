@@ -30,9 +30,5 @@ describe SitesController do
     it "routes to #require" do
       get("/sites/1/require").should route_to("sites#require", :id => "1")
     end
-
-    it "routes to #new_site_file" do
-      get("/sites/1/new_site_file").should route_to("sites#new_site_file", :id => "1")
-    end
   end
 end

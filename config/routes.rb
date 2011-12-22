@@ -6,7 +6,6 @@ StaticWebSiteGen::Application.routes.draw do
   resources :sites, :except => [:show] do
     member do
       get 'require'
-      get 'new_site_file'
     end
   end
 

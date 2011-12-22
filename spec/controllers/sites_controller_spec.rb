@@ -58,14 +58,6 @@ describe SitesController do
     end
   end
   
-  # describe "GET new_site_file" do
-  #   it "redirects to new_site_file_path" do
-  #     site = Site.create! valid_attributes
-  #     get :new_site_file, :id => site.id
-  #     response.should redirect_to(new_site_file_path)
-  #   end
-  # end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Site" do
