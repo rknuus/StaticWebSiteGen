@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "sites/require.html.erb" do
+describe "sites/show.html.erb" do
   # before(:each) do
   #   assign(:site, stub_model(Site,
   #     :name => "MyString",
@@ -8,7 +8,7 @@ describe "sites/require.html.erb" do
   #   ).as_new_record)
   # end
 
-  it "renders require page" do
+  it "renders a site" do
     @site = mock_model(Site, :name => 'MyString', :template => 'MyText', :site_texts => nil)
 
     render

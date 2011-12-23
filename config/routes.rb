@@ -1,14 +1,9 @@
 StaticWebSiteGen::Application.routes.draw do
   root :to => 'sites#index'
 
-  resources :site_texts# , :except => [:show]
-
-  resources :sites, :except => [:show] do
-    member do
-      get 'require'
-    end
-  end
-
+  resources :site_texts
+  resources :sites
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

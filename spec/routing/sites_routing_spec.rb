@@ -11,6 +11,10 @@ describe SitesController do
       get("/sites/new").should route_to("sites#new")
     end
 
+    it "routes to #show" do
+      get("/sites/1").should route_to("sites#show", :id => "1")
+    end
+
     it "routes to #edit" do
       get("/sites/1/edit").should route_to("sites#edit", :id => "1")
     end
@@ -25,10 +29,6 @@ describe SitesController do
 
     it "routes to #destroy" do
       delete("/sites/1").should route_to("sites#destroy", :id => "1")
-    end
-
-    it "routes to #require" do
-      get("/sites/1/require").should route_to("sites#require", :id => "1")
     end
   end
 end

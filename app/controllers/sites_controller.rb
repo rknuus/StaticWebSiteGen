@@ -8,6 +8,15 @@ class SitesController < ApplicationController
     end
   end
 
+  # GET /sites/1
+  def show
+    @site = Site.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
   # GET /sites/new
   def new
     @site = Site.new
@@ -56,10 +65,5 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to sites_url }
     end
-  end
-
-  # GET /sites/1/require
-  def require
-    @site = Site.find(params[:id])
   end
 end

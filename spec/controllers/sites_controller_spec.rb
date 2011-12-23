@@ -35,6 +35,14 @@ describe SitesController do
     end
   end
 
+  describe "GET show" do
+    it "assigns the requested site as @site" do
+      site = Site.create! valid_attributes
+      get :show, :id => site.id
+      assigns(:site).should eq(site)
+    end
+  end
+
   describe "GET new" do
     it "assigns a new site as @site" do
       get :new
@@ -46,14 +54,6 @@ describe SitesController do
     it "assigns the requested site as @site" do
       site = Site.create! valid_attributes
       get :edit, :id => site.id
-      assigns(:site).should eq(site)
-    end
-  end
-  
-  describe "GET require" do
-    it "assigns the requested site as @site" do
-      site = Site.create! valid_attributes
-      get :require, :id => site.id
       assigns(:site).should eq(site)
     end
   end
