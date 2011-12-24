@@ -1,13 +1,4 @@
 class SiteTextsController < ApplicationController
-  # GET /site_texts
-  def index
-    @site_texts = SiteText.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   # GET /site_texts/1
   def show
     @site_text = SiteText.find(params[:id])

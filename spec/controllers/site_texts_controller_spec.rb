@@ -27,14 +27,6 @@ describe SiteTextsController do
     { :content => '&nbsp;', :name => 'whatsaname' }
   end
 
-  describe "GET index" do
-    it "assigns all site_texts as @site_texts" do
-      site_text = SiteText.create! valid_attributes
-      get :index
-      assigns(:site_texts).should eq([site_text])
-    end
-  end
-
   describe "GET new" do
     it "assigns a new site_text as @site_text" do
       get :new

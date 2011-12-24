@@ -6,6 +6,10 @@ describe "site_texts/show.html.erb" do
       :name => 'AName',
       :content => 'MyText'
     ))
+    @site_text.site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
+    ))
   end
 
   it "renders attributes in <p>" do
