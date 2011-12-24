@@ -12,9 +12,10 @@
 			<table>
 			<% @site.site_texts.each do |site_text| %> <!-- FIXME: use fields_for -->
 				<tr>
+					<td><%= site_text.name %></td>
 					<td><%= truncate(site_text.content, :length => 50) %></td>
 					<td><%= link_to 'View', site_text_path(site_text) %></td>
-					<td><%= link_to 'Edit', :edit_site_text, :id => site_text.id %></td>
+					<td><%= link_to 'Edit', edit_site_text_path(site_text) %></td>
 					<td><%= link_to 'Destroy', site_text, :confirm => 'Are you sure?', :method => :delete %></td>
 				</tr>
 			<% end %>
