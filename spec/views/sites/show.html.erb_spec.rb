@@ -38,4 +38,16 @@ describe "sites/show.html.erb" do
     assert_select 'div>table>tr>td', 't2'
     assert_select 'div>table>tr>td', 'text 2'
   end
+
+  it "renders a site with a truncated site text" do
+    @site = mock_model(Site, :name => 'MyString', :template => 'MyText',
+     :site_texts => [
+       mock_model(SiteText, :name => 't1', :content => 'x' * 51)
+     ]
+    )
+
+    render
+    
+    assert_select 'div>table>tr>td', /\.{3}$/
+  end
 end
