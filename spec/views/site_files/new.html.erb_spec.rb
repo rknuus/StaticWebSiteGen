@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe "site_files/new.html.erb" do
   before(:each) do
-    assign(:site_file, stub_model(SiteFile,
+    @site_text = assign(:site_file, stub_model(SiteFile,
       :site_id => 1,
       :name => "MyString",
       :path => "MyString"
     ).as_new_record)
+    @site_text.site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
+    ))
   end
 
   it "renders new site_file form" do

@@ -12,17 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :site_id %><br />
-    <%= f.number_field :site_id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
+		<!-- FIXME: replace by file_field -->
     <%= f.label :path %><br />
-    <%= f.text_field :path %>
+    <%= f.text_field :path, :size => 80 %>
   </div>
+	<%= f.hidden_field :site_id, :value => @site_file.site_id %>
   <div class="actions">
     <%= f.submit %>
   </div>
