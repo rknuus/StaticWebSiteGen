@@ -1,5 +1,8 @@
 == C.4: Create Site File
 add:    view, edit, and delete site_file links on site globals
+fix:    site text names must only be unique for a single site
+change: increased template textarea size
+change: title of site_text pages
 
 == C.3: Create Site Text
 add:    view, edit, and delete site_text links on site globals
