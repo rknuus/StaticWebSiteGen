@@ -1,4 +1,48 @@
 class SitesController < ApplicationController
+private
+  DEFAULT_TEMPLATE = %q{<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title><%= page.texts.title %> | <%= site.texts.server %></title>
+
+	<meta name="keywords" content=""> <!-- FIXME: TBD -->
+
+	<link rel="stylesheet" href="stylesheets/layout.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/<%= raw_name(page.texts.filename) %>_layout.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/<%= raw_name(page.texts.filename) %>_style.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			&nbsp; <!-- FIXME: TBD -->
+		</div> <!-- end of header -->
+		<div id="middle">
+			<div id="sidebar">
+				<div id="navigation">
+				<% site.pages.each do |reference| %>
+					<p><a href="<%= reference.texts.filename %>"><%= reference.texts.title %></a></p>
+				<% end %>
+				</div> <!-- end of navigation -->
+			</div> <!-- end of sidebar -->
+			<div id="main">
+				<div id="main_content">
+				<%= render(page.texts.content) unless page.texts.content.nil? %>
+				</div> <!-- end of main_content -->
+			</div> <!-- end of main area -->
+		</div> <!-- end of middle -->
+		<div id="footer_separator">
+			&nbsp;
+		</div> <!-- end of footer_separator -->
+		<div id="footer">
+			&nbsp; <!-- FIXME: TBD -->
+		</div> <!-- end of the footer -->
+	</div> <!-- end of page wrapper -->
+</body>
+</html>}
+  
+public
   # GET /sites
   def index
     @sites = Site.all
@@ -19,7 +63,7 @@ class SitesController < ApplicationController
 
   # GET /sites/new
   def new
-    @site = Site.new
+    @site = Site.new(:template => DEFAULT_TEMPLATE)
 
     respond_to do |format|
       format.html # new.html.erb
