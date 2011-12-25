@@ -1,3 +1,8 @@
+== C.5: Create Page
+add:    create page model
+add:    link to pages index for site on site index
+add:    edit page content and edit page requirements links on page index
+
 == C.4: Create Site File
 add:    view, edit, and delete site_file links on site globals
 fix:    site text names must only be unique for a single site

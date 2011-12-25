@@ -1,4 +1,6 @@
 StaticWebSiteGen::Application.routes.draw do
+  resources :pages
+
   root :to => 'sites#index'
 
   resources :sites
