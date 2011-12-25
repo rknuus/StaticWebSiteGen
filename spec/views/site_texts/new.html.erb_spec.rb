@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe "site_texts/new.html.erb" do
   before(:each) do
-    assign(:site_text, stub_model(SiteText,
+    @site_text = assign(:site_text, stub_model(SiteText,
       :site_id => 1,
       :content => "MyText",
       :name => 'MyName'
     ).as_new_record)
+    @site_text.site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
+    ))
   end
 
   it "renders new site_text form" do
