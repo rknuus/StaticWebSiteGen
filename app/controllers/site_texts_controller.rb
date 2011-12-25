@@ -51,10 +51,11 @@ class SiteTextsController < ApplicationController
   # DELETE /site_texts/1
   def destroy
     @site_text = SiteText.find(params[:id])
+    site_id = @site_text.site_id
     @site_text.destroy
 
     respond_to do |format|
-      format.html { redirect_to site_url(@site_text.site_id) }
+      format.html { redirect_to site_url(site_id) }
     end
   end
 end
