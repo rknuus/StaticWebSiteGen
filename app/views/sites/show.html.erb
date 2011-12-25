@@ -10,6 +10,13 @@
 		<h2>Site texts:</h2>
 		<% if @site.site_texts %>
 			<table>
+				<tr>
+					<th>Name</th>
+					<th>Content</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
 			<% @site.site_texts.each do |site_text| %> <!-- FIXME: use fields_for -->
 				<tr>
 					<td><%= site_text.name %></td>

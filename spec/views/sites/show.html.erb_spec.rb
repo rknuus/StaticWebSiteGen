@@ -33,6 +33,8 @@ describe "sites/show.html.erb" do
 
     render
     
+    assert_select 'div>table>tr>th', 'Name'
+    assert_select 'div>table>tr>th', 'Content'
     assert_select 'div>table>tr>td', 't1'
     assert_select 'div>table>tr>td', 'text 1'
     assert_select 'div>table>tr>td', 't2'
