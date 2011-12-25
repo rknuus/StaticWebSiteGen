@@ -24,7 +24,6 @@ describe SiteTextsController do
   # SiteText. As you add validations to SiteText, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    # site = Site.create(:name => "MyString", :template => "MyText")
     @site = stub_model(Site, :id => 1, :name => "MyString", :template => "MyText")
     
     { :content => '&nbsp;', :name => 'n.n.', :site_id => @site.id }
