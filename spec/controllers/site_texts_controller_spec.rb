@@ -24,14 +24,10 @@ describe SiteTextsController do
   # SiteText. As you add validations to SiteText, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { :content => '&nbsp;', :name => 'whatsaname', :site_id => 1# ,
-    #       :site =>
-    #         assign(:site, stub_model(Site,
-    #         :name => "MyString",
-    #         :template => "MyText"
-    #         )
-    #       )
-    }
+    # site = Site.create(:name => "MyString", :template => "MyText")
+    @site = stub_model(Site, :id => 1, :name => "MyString", :template => "MyText")
+    
+    { :content => '&nbsp;', :name => 'n.n.', :site_id => @site.id }
   end
 
   describe "GET new" do
@@ -65,7 +61,7 @@ describe SiteTextsController do
 
       it "redirects to the created site_text" do
         post :create, :site_text => valid_attributes
-        response.should redirect_to(site_texts_url)
+        response.should redirect_to(site_url(valid_attributes[:site_id]))
       end
     end
 
@@ -107,7 +103,7 @@ describe SiteTextsController do
       it "redirects to the site_text" do
         site_text = SiteText.create! valid_attributes
         put :update, :id => site_text.id, :site_text => valid_attributes
-        response.should redirect_to(site_url(site_text.site))
+        response.should redirect_to(site_url(site_text.site_id))
       end
     end
 
@@ -141,7 +137,7 @@ describe SiteTextsController do
     it "redirects to the site_texts list" do
       site_text = SiteText.create! valid_attributes
       delete :destroy, :id => site_text.id
-      response.should redirect_to(site_url(site_text.site))
+      response.should redirect_to(site_url(site_text.site_id))
     end
   end
 
