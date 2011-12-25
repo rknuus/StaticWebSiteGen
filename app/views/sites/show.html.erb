@@ -35,7 +35,28 @@
 
 <div id="site_files">
 	<h2>Site files:</h2>
-	<%= link_to 'New site file', new_site_file_path(:site_id => @site) %> <!-- new_site_file_path -->
+	<% if @site.site_files %>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Path</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		<% @site.site_files.each do |site_file| %> <!-- FIXME: use fields_for -->
+			<tr>
+				<td><%= site_file.name %></td>
+				<td><%= truncate(site_file.path, :length => 50) %></td>
+				<td><%= link_to 'View', site_file_path(site_file) %></td>
+				<td><%= link_to 'Edit', edit_site_file_path(site_file) %></td>
+				<td><%= link_to 'Destroy', site_file, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+		<% end %>
+		</table>
+	<% end %>
+
+	<%= link_to 'New site file', new_site_file_path(:site_id => @site) %>
 </div>
 
 <%= close_link %>
