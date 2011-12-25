@@ -29,14 +29,6 @@ describe SiteFilesController do
     { :path => '/foo/bar', :name => 'n.n.', :site_id => @site.id }
   end
 
-  describe "GET index" do
-    it "assigns all site_files as @site_files" do
-      site_file = SiteFile.create! valid_attributes
-      get :index
-      assigns(:site_files).should eq([site_file])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested site_file as @site_file" do
       site_file = SiteFile.create! valid_attributes
@@ -76,7 +68,7 @@ describe SiteFilesController do
 
       it "redirects to the created site_file" do
         post :create, :site_file => valid_attributes
-        response.should redirect_to(SiteFile.last)
+        response.should redirect_to(site_url(valid_attributes[:site_id]))
       end
     end
 
@@ -118,7 +110,7 @@ describe SiteFilesController do
       it "redirects to the site_file" do
         site_file = SiteFile.create! valid_attributes
         put :update, :id => site_file.id, :site_file => valid_attributes
-        response.should redirect_to(site_file)
+        response.should redirect_to(site_url(site_file.site_id))
       end
     end
 
@@ -152,7 +144,7 @@ describe SiteFilesController do
     it "redirects to the site_files list" do
       site_file = SiteFile.create! valid_attributes
       delete :destroy, :id => site_file.id
-      response.should redirect_to(site_files_url)
+      response.should redirect_to(site_url(site_file.site_id))
     end
   end
 

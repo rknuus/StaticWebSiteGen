@@ -3,10 +3,6 @@ require "spec_helper"
 describe SiteFilesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/site_files").should route_to("site_files#index")
-    end
-
     it "routes to #new" do
       get("/site_files/new").should route_to("site_files#new")
     end
