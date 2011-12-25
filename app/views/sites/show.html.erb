@@ -3,7 +3,7 @@
 <%= form_for(@site) do |f| %>
 	<div class="field">
 	  <%= f.label :template %><br />
-	  <%= f.text_area :template, :disabled => true %>
+	  <%= f.text_area :template, :disabled => true, :size => get_textarea_size %>
 	</div>
 
 	<div id="site_texts">
