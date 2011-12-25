@@ -1,3 +1,9 @@
 == C.3: Create Site Text
-bug:    missing route to show_site_text_path
 add:    view, edit, and delete site_text links on site requirements
+change: replaced site require page and action by show
+
+== C.2: Show Site Requirements
+add:    require page and action
+
+== C.1: Create Site
+add:    CRUD site
