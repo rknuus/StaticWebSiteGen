@@ -1,3 +1,6 @@
+== C.4: Create Site File
+add:    view, edit, and delete site_file links on site globals
+
 == C.3: Create Site Text
 add:    view, edit, and delete site_text links on site globals
 change: replaced site require page and action by show

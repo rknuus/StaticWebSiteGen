@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site:</b>
+  <%= @site_file.site_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @site_file.name %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @site_file.path %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_file_path(@site_file) %> |
+<%= link_to 'Back', site_files_path %>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111224012628) do
+ActiveRecord::Schema.define(:version => 20111225160850) do
+
+  create_table "site_files", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "name"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "site_texts", :force => true do |t|
     t.integer  "site_id"

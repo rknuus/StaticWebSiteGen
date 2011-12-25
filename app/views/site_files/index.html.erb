@@ -1,0 +1,27 @@
+<h1>Listing site_files</h1>
+
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Name</th>
+    <th>Path</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_files.each do |site_file| %>
+  <tr>
+    <td><%= site_file.site_id %></td>
+    <td><%= site_file.name %></td>
+    <td><%= site_file.path %></td>
+    <td><%= link_to 'Show', site_file %></td>
+    <td><%= link_to 'Edit', edit_site_file_path(site_file) %></td>
+    <td><%= link_to 'Destroy', site_file, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site file', new_site_file_path %>
