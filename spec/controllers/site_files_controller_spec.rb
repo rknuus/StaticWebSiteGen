@@ -24,7 +24,9 @@ describe SiteFilesController do
   # SiteFile. As you add validations to SiteFile, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    @site = stub_model(Site, :id => 1, :name => "MyString", :template => "MyText")
+
+    { :path => '/foo/bar', :name => 'n.n.', :site_id => @site.id }
   end
 
   describe "GET index" do
