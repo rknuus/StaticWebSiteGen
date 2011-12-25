@@ -9,4 +9,6 @@ describe SiteText do
     SiteText.create(:name => 'unique', :content => 'content')
     SiteText.new(:name => 'unique', :content => 'content').valid?.should eq(false)
   end
+  
+  #FIXME: name should be unique only for a single site, but not globally unique
 end
