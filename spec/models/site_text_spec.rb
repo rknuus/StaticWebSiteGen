@@ -6,9 +6,14 @@ describe SiteText do
   end
 
   it "name should be unique" do
-    SiteText.create(:name => 'unique', :content => 'content')
-    SiteText.new(:name => 'unique', :content => 'content').valid?.should eq(false)
+    params = { :name => 'unique', :content => 'content', :site_id => 1 }
+    SiteText.create(params)
+    SiteText.new(params).valid?.should eq(false)
   end
   
-  #FIXME: name should be unique only for a single site, but not globally unique
+  it "should allow two sites to use same name" do
+    params = { :name => 'unique', :content => 'content' }
+    SiteText.create(params.merge({ :site_id => 1 }))
+    SiteText.new(params.merge({ :site_id => 2 })).valid?.should eq(true)
+  end
 end
