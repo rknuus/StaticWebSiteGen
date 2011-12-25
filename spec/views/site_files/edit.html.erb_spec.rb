@@ -3,9 +3,12 @@ require 'spec_helper'
 describe "site_files/edit.html.erb" do
   before(:each) do
     @site_file = assign(:site_file, stub_model(SiteFile,
-      :site_id => 1,
       :name => "MyString",
       :path => "MyString"
+    ))
+    @site_file.site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
     ))
   end
 
