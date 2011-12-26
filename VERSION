@@ -1,3 +1,7 @@
+== C.7: Create Page File
+add:    create simplified PageFile model with only a file path instead of a BLOB
+add:    view, edit, and delete page_file links on page locals
+
 == C.6: Create Page Text
 add:    create PageText model
 add:    view, edit, and delete page_text links on page locals
