@@ -89,9 +89,9 @@ describe PagesController do
         assigns(:page).should be_persisted
       end
 
-      it "redirects to the created page" do
+      it "redirects to the pages index" do
         post :create, :page => valid_attributes
-        response.should redirect_to(Page.last)
+        response.should redirect_to(pages_path(:site_id => @site.id))
       end
     end
 
