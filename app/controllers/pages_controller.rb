@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
   # GET /pages
   def index
-    @pages = Page.all
+    site = Site.find(params[:site_id])
+    @site_name = ''
+    @site_name = site.name unless site.nil?
+    @pages = Page.find_all_by_site_id(params[:site_id])
 
     respond_to do |format|
       format.html # index.html.erb
