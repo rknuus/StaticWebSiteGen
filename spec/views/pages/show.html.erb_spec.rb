@@ -59,22 +59,22 @@ describe "pages/show.html.erb" do
     assert_select 'div>table>tr>td', /\.{3}$/
   end
   
-  #FIXME
-  # it "renders a page with two page files" do
-  #   @page = mock_model(Page, :name => 'MyString', :template => 'MyText',
-  #    :page_texts => nil, :page_files => [
-  #      mock_model(PageFile, :name => 'f1', :path => '/foo/bar'),
-  #      mock_model(PageFile, :name => 'f2', :path => '/foo/baz')
-  #    ]
-  #   )
-  # 
-  #   render
-  #   
-  #   assert_select 'div>table>tr>th', 'Name'
-  #   assert_select 'div>table>tr>th', 'Path'
-  #   assert_select 'div>table>tr>td', 'f1'
-  #   assert_select 'div>table>tr>td', '/foo/bar'
-  #   assert_select 'div>table>tr>td', 'f2'
-  #   assert_select 'div>table>tr>td', '/foo/baz'
-  # end
+  it "renders a page with two page files" do
+    site = mock_model(Site, :name => 'MyString', :template => 'MyText')
+    @page = mock_model(Page, :name => 'MyString', :content => 'MyText',
+     :page_texts => nil, :page_files => [
+       mock_model(PageFile, :name => 'f1', :path => '/foo/bar'),
+       mock_model(PageFile, :name => 'f2', :path => '/foo/baz')
+     ], :site_id => site.id
+    )
+  
+    render
+    
+    assert_select 'div>table>tr>th', 'Name'
+    assert_select 'div>table>tr>th', 'Path'
+    assert_select 'div>table>tr>td', 'f1'
+    assert_select 'div>table>tr>td', '/foo/bar'
+    assert_select 'div>table>tr>td', 'f2'
+    assert_select 'div>table>tr>td', '/foo/baz'
+  end
 end
