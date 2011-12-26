@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "page_texts/new.html.erb" do
   before(:each) do
     @page_text = assign(:page_text, stub_model(PageText,
-      :site_id => 1,
       :name => "MyString",
       :content => "MyText"
     ).as_new_record)

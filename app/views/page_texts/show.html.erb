@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>Viewing text of <%= @page_text.page.name %></h1>
 
-<p>
-  <b>Site:</b>
-  <%= @page_text.site_id %>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -17,4 +14,4 @@
 
 
 <%= link_to 'Edit', edit_page_text_path(@page_text) %> |
-<%= link_to 'Back', page_texts_path %>
+<%= close_page_text_link %>
