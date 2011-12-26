@@ -3,4 +3,5 @@ class Page < ActiveRecord::Base
   validates :name, :uniqueness => { :scope => :site_id }
 
   belongs_to :site
+  has_many :page_texts
 end
