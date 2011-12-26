@@ -1,6 +1,5 @@
-<h1>Editing page</h1>
+<h1>Editing page of <%= @page.site.name %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<%= cancel_page_link %>

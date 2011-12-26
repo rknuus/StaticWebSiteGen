@@ -7,6 +7,10 @@ describe "pages/edit.html.erb" do
       :name => "MyString",
       :content => "MyText"
     ))
+    @page.site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
+    ))
   end
 
   it "renders the edit page form" do
