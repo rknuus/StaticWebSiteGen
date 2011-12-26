@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "site_texts/edit.html.erb" do
   before(:each) do
     @site_text = assign(:site_text, stub_model(SiteText,
-      :site_id => 1,
       :content => "MyText",
       :name => 'MyName'
     ))
