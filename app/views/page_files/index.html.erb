@@ -1,0 +1,27 @@
+<h1>Listing page_files</h1>
+
+<table>
+  <tr>
+    <th>Page</th>
+    <th>Name</th>
+    <th>Path</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @page_files.each do |page_file| %>
+  <tr>
+    <td><%= page_file.page_id %></td>
+    <td><%= page_file.name %></td>
+    <td><%= page_file.path %></td>
+    <td><%= link_to 'Show', page_file %></td>
+    <td><%= link_to 'Edit', edit_page_file_path(page_file) %></td>
+    <td><%= link_to 'Destroy', page_file, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page file', new_page_file_path %>

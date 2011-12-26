@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Page:</b>
+  <%= @page_file.page_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @page_file.name %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @page_file.path %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_file_path(@page_file) %> |
+<%= link_to 'Back', page_files_path %>

@@ -1,4 +1,6 @@
 StaticWebSiteGen::Application.routes.draw do
+  resources :page_files
+
   resources :page_texts
 
   resources :pages
