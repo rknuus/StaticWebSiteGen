@@ -10,7 +10,7 @@ class PageFilesController < ApplicationController
 
   # GET /page_files/new
   def new
-    @page_file = PageFile.new
+    @page_file = PageFile.new(:page_id => params[:page_id])
 
     respond_to do |format|
       format.html # new.html.erb
