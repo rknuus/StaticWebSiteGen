@@ -35,4 +35,30 @@
 	</div>
 <% end %>
 
+<div id="page_files">
+	<h2>Page files:</h2>
+	<% if @page.page_files %>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Path</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		<% @page.page_files.each do |page_file| %> <!-- FIXME: use fields_for -->
+			<tr>
+				<td><%= page_file.name %></td>
+				<td><%= truncate(page_file.path, :length => 50) %></td>
+				<td><%= link_to 'View', page_file_path(page_file) %></td>
+				<td><%= link_to 'Edit', edit_page_file_path(page_file) %></td>
+				<td><%= link_to 'Destroy', page_file, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+		<% end %>
+		</table>
+	<% end %>
+
+	<%= link_to 'New page file', new_page_file_path(:page_id => @page) %>
+</div>
+
 <%= close_page_link %>

@@ -22,8 +22,8 @@ describe "pages/show.html.erb" do
     assert_select 'form>div>textarea', 'MyText'
     assert_select 'div>h2', 'Page texts:'
     assert_select 'div>a', 'New page text'
-    # assert_select 'div>h2', 'Page files:'
-    # assert_select 'div>a', 'New page file'
+    assert_select 'div>h2', 'Page files:'
+    assert_select 'div>a', 'New page file'
     assert_select 'a', 'Close'
   end
 
