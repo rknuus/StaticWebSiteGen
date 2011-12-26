@@ -66,7 +66,7 @@ describe SiteFilesController do
         assigns(:site_file).should be_persisted
       end
 
-      it "redirects to the created site_file" do
+      it "redirects to the parent site" do
         post :create, :site_file => valid_attributes
         response.should redirect_to(site_url(valid_attributes[:site_id]))
       end

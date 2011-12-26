@@ -66,7 +66,7 @@ describe SiteTextsController do
         assigns(:site_text).should be_persisted
       end
 
-      it "redirects to the created site_text" do
+      it "redirects to the parent site" do
         post :create, :site_text => valid_attributes
         response.should redirect_to(site_url(valid_attributes[:site_id]))
       end
