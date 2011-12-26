@@ -1,20 +1,38 @@
+<h1><%= @page.name %> requires</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Site:</b>
-  <%= @page.site_id %>
-</p>
+<%= form_for(@page) do |f| %>
+	<div class="field">
+	  <%= f.label :content %><br />
+	  <%= f.text_area :content, :disabled => true, :size => get_textarea_size %>
+	</div>
 
-<p>
-  <b>Name:</b>
-  <%= @page.name %>
-</p>
+	<div id="page_texts">
+		<h2>Page texts:</h2>
+		<% if @page.page_texts %>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Content</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			<% @page.page_texts.each do |page_text| %> <!-- FIXME: use fields_for -->
+				<tr>
+					<td><%= page_text.name %></td>
+					<td><%= truncate(page_text.content, :length => 50) %></td>
+					<td><%= link_to 'View', page_text_path(page_text) %></td>
+					<td><%= link_to 'Edit', edit_page_text_path(page_text) %></td>
+					<td><%= link_to 'Destroy', page_text, :confirm => 'Are you sure?', :method => :delete %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %>
 
-<p>
-  <b>Content:</b>
-  <%= @page.content %>
-</p>
+		<%= link_to 'New page text', new_page_text_path(:page_id => @page) %>
+	</div>
+<% end %>
 
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= close_page_link %>
