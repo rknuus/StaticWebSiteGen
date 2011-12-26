@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20111226141634) do
 
   create_table "page_texts", :force => true do |t|
-    t.integer  "site_id"
+    t.integer  "page_id"
     t.string   "name"
     t.text     "content"
     t.datetime "created_at"
