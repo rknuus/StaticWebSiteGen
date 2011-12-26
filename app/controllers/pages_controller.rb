@@ -55,7 +55,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to pages_path(:site_id => @page.site_id), notice: 'Page was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

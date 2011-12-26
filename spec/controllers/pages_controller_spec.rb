@@ -133,7 +133,7 @@ describe PagesController do
       it "redirects to the page" do
         page = Page.create! valid_attributes
         put :update, :id => page.id, :page => valid_attributes
-        response.should redirect_to(page)
+        response.should redirect_to(pages_path(:site_id => @site.id))
       end
     end
 
