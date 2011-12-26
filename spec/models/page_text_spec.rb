@@ -5,15 +5,15 @@ describe PageText do
     PageText.new.valid?.should eq(false)
   end
 
-  # it "name should be unique" do
-  #   params = { :name => 'unique', :content => 'content', :site_id => 1 }
-  #   PageText.create(params)
-  #   PageText.new(params).valid?.should eq(false)
-  # end
-  # 
-  # it "should allow two sites to use same name" do
-  #   params = { :name => 'unique', :content => 'content' }
-  #   PageText.create(params.merge({ :site_id => 1 }))
-  #   PageText.new(params.merge({ :site_id => 2 })).valid?.should eq(true)
-  # end
+  it "name should be unique" do
+    params = { :name => 'unique', :content => 'content', :page_id => 1 }
+    PageText.create(params)
+    PageText.new(params).valid?.should eq(false)
+  end
+  
+  it "should allow two sites to use same name" do
+    params = { :name => 'unique', :content => 'content' }
+    PageText.create(params.merge({ :page_id => 1 }))
+    PageText.new(params.merge({ :page_id => 2 })).valid?.should eq(true)
+  end
 end
