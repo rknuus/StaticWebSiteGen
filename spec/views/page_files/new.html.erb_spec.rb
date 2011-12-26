@@ -16,9 +16,9 @@ describe "page_files/new.html.erb" do
     render
 
     assert_select "form", :action => page_files_path, :method => "post" do
-      assert_select "input#page_file_page_id", :name => "page_file[page_id]"
       assert_select "input#page_file_name", :name => "page_file[name]"
       assert_select "input#page_file_path", :name => "page_file[path]"
+      assert_select "input#page_file_page_id", :name => "page_file[page_id]", :type => :hidden
     end
   end
 end
