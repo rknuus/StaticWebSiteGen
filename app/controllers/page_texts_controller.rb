@@ -1,13 +1,4 @@
 class PageTextsController < ApplicationController
-  # GET /page_texts
-  def index
-    @page_texts = PageText.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   # GET /page_texts/1
   def show
     @page_text = PageText.find(params[:id])

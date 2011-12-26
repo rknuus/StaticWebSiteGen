@@ -29,14 +29,6 @@ describe PageTextsController do
     { :content => '&nbsp;', :name => 'n.n.', :page_id => @page.id }
   end
 
-  describe "GET index" do
-    it "assigns all page_texts as @page_texts" do
-      page_text = PageText.create! valid_attributes
-      get :index
-      assigns(:page_texts).should eq([page_text])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested page_text as @page_text" do
       page_text = PageText.create! valid_attributes
