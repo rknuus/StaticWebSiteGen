@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "page_files/edit.html.erb" do
   before(:each) do
     @page_file = assign(:page_file, stub_model(PageFile,
-      :page_id => 1,
       :name => "MyString",
       :path => "MyString"
     ))
