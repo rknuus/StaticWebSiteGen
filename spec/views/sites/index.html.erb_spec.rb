@@ -19,6 +19,7 @@ describe "sites/index.html.erb" do
     assert_select 'tr>td', :text => 'Name', :count => 2
     assert_select 'tr>td>a', :text => 'Edit site', :count => 2
     assert_select 'tr>td>a', :text => 'Edit globals', :count => 2
+    assert_select 'tr>td>a', :text => 'Pages', :count => 2
     assert_select 'tr>td>a', :text => 'Destroy', :count => 2
     assert_select 'a', 'New site'
   end

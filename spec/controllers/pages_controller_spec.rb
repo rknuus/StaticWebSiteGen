@@ -24,13 +24,23 @@ describe PagesController do
   # Page. As you add validations to Page, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    @site = stub_model(Site, :name => "MyString", :template => "MyText")
+    
+    { :site_id => @site.id }
   end
 
   describe "GET index" do
+    it "assigns the parent site name to @site_name" do
+      page = Page.create! valid_attributes
+      Site.stub(:find) { @site }
+      get :index, :site_id => @site.id
+      assigns(:site_name).should eq('MyString')
+    end
+
     it "assigns all pages as @pages" do
       page = Page.create! valid_attributes
-      get :index
+      Site.stub(:find) { @site }
+      get :index, :site_id => @site.id
       assigns(:pages).should eq([page])
     end
   end
