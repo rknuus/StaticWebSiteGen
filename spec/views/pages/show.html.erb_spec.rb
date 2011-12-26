@@ -46,18 +46,19 @@ describe "pages/show.html.erb" do
     assert_select 'div>table>tr>td', 'text 2'
   end
   
-  # it "renders a page with a truncated page text" do
-  #   @page = mock_model(Page, :name => 'MyString', :template => 'MyText',
-  #    :page_files => nil, :page_texts => [
-  #      mock_model(PageText, :name => 't1', :content => 'x' * 51)
-  #    ]
-  #   )
-  # 
-  #   render
-  #   
-  #   assert_select 'div>table>tr>td', /\.{3}$/
-  # end
-  # 
+  it "renders a page with a truncated page text" do
+    site = mock_model(Site, :name => 'MyString', :template => 'MyText')
+    @page = mock_model(Page, :name => 'MyString', :content => 'MyText',
+     :page_files => nil, :page_texts => [
+       mock_model(PageText, :name => 't1', :content => 'x' * 51)
+     ], :site_id => site.id
+    )
+  
+    render
+    
+    assert_select 'div>table>tr>td', /\.{3}$/
+  end
+  
   #FIXME
   # it "renders a page with two page files" do
   #   @page = mock_model(Page, :name => 'MyString', :template => 'MyText',
