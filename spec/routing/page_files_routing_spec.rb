@@ -3,10 +3,6 @@ require "spec_helper"
 describe PageFilesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/page_files").should route_to("page_files#index")
-    end
-
     it "routes to #new" do
       get("/page_files/new").should route_to("page_files#new")
     end

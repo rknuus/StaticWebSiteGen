@@ -3,10 +3,6 @@ require "spec_helper"
 describe PageTextsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/page_texts").should route_to("page_texts#index")
-    end
-
     it "routes to #new" do
       get("/page_texts/new").should route_to("page_texts#new")
     end
