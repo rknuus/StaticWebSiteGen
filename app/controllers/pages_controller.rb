@@ -68,7 +68,7 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to pages_path(:site_id => @page.site_id) }
     end
   end
   
