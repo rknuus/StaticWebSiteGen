@@ -6,6 +6,10 @@ describe "page_files/show.html.erb" do
       :name => "Name",
       :path => "Path"
     ))
+    @page_file.page = assign(:page, stub_model(Page,
+      :name => "MyString",
+      :content => "MyText"
+    ))
   end
 
   it "renders attributes in <p>" do
