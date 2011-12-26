@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe "page_texts/new.html.erb" do
   before(:each) do
-    assign(:page_text, stub_model(PageText,
+    @page_text = assign(:page_text, stub_model(PageText,
       :site_id => 1,
       :name => "MyString",
       :content => "MyText"
     ).as_new_record)
+    @page_text.page = assign(:page, stub_model(Page,
+      :name => "MyString",
+      :content => "MyText"
+    ))
   end
 
   it "renders new page_text form" do

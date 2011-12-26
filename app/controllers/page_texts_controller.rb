@@ -10,7 +10,7 @@ class PageTextsController < ApplicationController
 
   # GET /page_texts/new
   def new
-    @page_text = PageText.new
+    @page_text = PageText.new(:page_id => params[:page_id])
 
     respond_to do |format|
       format.html # new.html.erb
