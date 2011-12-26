@@ -18,7 +18,7 @@
   <div class="field">
 		<!-- FIXME: replace by file_field -->
     <%= f.label :path %><br />
-    <%= f.text_field :path, :size => 80 %>
+    <%= f.text_field :path, :size => get_pathfield_size %>
   </div>
 	<%= f.hidden_field :site_id, :value => @site_file.site_id %>
   <div class="actions">
