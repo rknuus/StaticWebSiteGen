@@ -28,7 +28,7 @@ class PageTextsController < ApplicationController
 
     respond_to do |format|
       if @page_text.save
-        format.html { redirect_to @page_text, notice: 'Page text was successfully created.' }
+        format.html { redirect_to page_url(@page_text.page_id), notice: 'Page text was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -41,7 +41,7 @@ class PageTextsController < ApplicationController
 
     respond_to do |format|
       if @page_text.update_attributes(params[:page_text])
-        format.html { redirect_to @page_text, notice: 'Page text was successfully updated.' }
+        format.html { redirect_to page_url(@page_text.page_id), notice: 'Page text was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -51,10 +51,11 @@ class PageTextsController < ApplicationController
   # DELETE /page_texts/1
   def destroy
     @page_text = PageText.find(params[:id])
+    page_id = @page_text.page_id
     @page_text.destroy
 
     respond_to do |format|
-      format.html { redirect_to page_texts_url }
+      format.html { redirect_to page_url(page_id) }
     end
   end
 end
