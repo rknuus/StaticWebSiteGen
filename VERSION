@@ -1,3 +1,7 @@
+== C.6: Create Page Text
+add:    create PageText model
+add:    view, edit, and delete page_text links on page locals
+
 == C.5: Create Page
 add:    create page model
 add:    link to pages index for site on site index
