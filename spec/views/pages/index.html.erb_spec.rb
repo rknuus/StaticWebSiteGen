@@ -18,7 +18,10 @@ describe "pages/index.html.erb" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "a", :text => 'New Page'
+    assert_select 'tr>td>a', :text => 'Edit page', :count => 2
+    assert_select 'tr>td>a', :text => 'Edit locals', :count => 2
+    assert_select 'tr>td>a', :text => 'Destroy', :count => 2
+    assert_select "a", :text => 'New page'
     assert_select "a", :text => 'Sites'
   end
 end
