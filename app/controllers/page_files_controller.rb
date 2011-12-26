@@ -1,13 +1,4 @@
 class PageFilesController < ApplicationController
-  # GET /page_files
-  def index
-    @page_files = PageFile.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   # GET /page_files/1
   def show
     @page_file = PageFile.find(params[:id])

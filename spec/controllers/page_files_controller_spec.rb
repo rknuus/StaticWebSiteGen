@@ -29,14 +29,6 @@ describe PageFilesController do
     { :path => '/foo/bar', :name => 'n.n.', :page_id => @page.id }
   end
 
-  describe "GET index" do
-    it "assigns all page_files as @page_files" do
-      page_file = PageFile.create! valid_attributes
-      get :index
-      assigns(:page_files).should eq([page_file])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested page_file as @page_file" do
       page_file = PageFile.create! valid_attributes
