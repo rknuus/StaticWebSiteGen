@@ -26,7 +26,7 @@ describe PagesController do
   def valid_attributes
     @site = stub_model(Site, :name => "MyString", :template => "MyText")
     
-    { :site_id => @site.id }
+    { :site_id => @site.id, :name => 'MyPage', :content => 'MyPageContent' }
   end
 
   describe "GET index" do
