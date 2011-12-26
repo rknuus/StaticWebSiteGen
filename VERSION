@@ -1,7 +1,8 @@
 == C.5: Create Page
 add:    create page model
 add:    link to pages index for site on site index
-add:    edit page content and edit page requirements links on page index
+add:    edit page content and edit page locals links on page index
+add:    view, edit, and delete page actions
 
 == C.4: Create Site File
 add:    view, edit, and delete site_file links on site globals
