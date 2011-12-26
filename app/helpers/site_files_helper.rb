@@ -1,9 +1,14 @@
 module SiteFilesHelper
   def cancel_site_file_link
-    link_to 'Cancel', site_path(@site_file.site)
+    site_file_link 'Cancel'
   end
 
   def close_site_file_link
-    link_to 'Close', site_path(@site_file.site)
+    site_file_link 'Close'
+  end
+
+private
+  def site_file_link(name)
+    link_to name, site_path(@site_file.site)
   end
 end

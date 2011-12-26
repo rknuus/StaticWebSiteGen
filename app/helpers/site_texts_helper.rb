@@ -1,9 +1,14 @@
 module SiteTextsHelper
   def cancel_site_text_link
-    link_to 'Cancel', site_path(@site_text.site)
+    site_text_link 'Cancel'
   end
 
   def close_site_text_link
-    link_to 'Close', site_path(@site_text.site)
+    site_text_link 'Close'
+  end
+  
+private
+  def site_text_link(name)
+    link_to name, site_path(@site_text.site)
   end
 end
