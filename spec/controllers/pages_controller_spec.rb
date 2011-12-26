@@ -43,6 +43,13 @@ describe PagesController do
       get :index, :site_id => @site.id
       assigns(:pages).should eq([page])
     end
+    
+    it "assigns the parent site ID to @site_id" do
+      page = Page.create! valid_attributes
+      Site.stub(:find) { @site }
+      get :index, :site_id => @site.id
+      assigns(:site_id).should eq(@site.id)
+    end
   end
 
   describe "GET show" do

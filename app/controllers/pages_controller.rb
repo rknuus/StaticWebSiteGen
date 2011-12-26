@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
   # GET /pages
   def index
-    site = Site.find(params[:site_id])
+    set_site_id
+    site = Site.find(@site_id)
     @site_name = ''
     @site_name = site.name unless site.nil?
-    @pages = Page.find_all_by_site_id(params[:site_id])
+    @pages = Page.find_all_by_site_id(@site_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +23,8 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
+    set_site_id
+    @page = Page.new(:site_id => @site_id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -68,5 +70,11 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to pages_url }
     end
+  end
+  
+private
+  def set_site_id
+    @site_id = -1
+    @site_id = params[:site_id].to_i if params[:site_id]
   end
 end
