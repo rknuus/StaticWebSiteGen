@@ -24,7 +24,9 @@ describe PageFilesController do
   # PageFile. As you add validations to PageFile, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    @page = stub_model(Page, :id => 1, :name => "MyString", :content => "MyText")
+    
+    { :path => '/foo/bar', :name => 'n.n.', :page_id => @page.id }
   end
 
   describe "GET index" do
