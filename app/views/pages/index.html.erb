@@ -1,8 +1,7 @@
-<h1>Listing pages</h1>
+<h1>Listing pages of <%= @site_name %></h1>
 
 <table>
   <tr>
-    <th>Site</th>
     <th>Name</th>
     <th>Content</th>
     <th></th>
@@ -12,7 +11,6 @@
 
 <% @pages.each do |page| %>
   <tr>
-    <td><%= page.site_id %></td>
     <td><%= page.name %></td>
     <td><%= page.content %></td>
     <td><%= link_to 'Show', page %></td>
