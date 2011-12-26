@@ -24,7 +24,9 @@ describe PageTextsController do
   # PageText. As you add validations to PageText, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    @page = stub_model(Page, :id => 1, :name => "MyString", :content => "MyText")
+    
+    { :content => '&nbsp;', :name => 'n.n.', :page_id => @page.id }
   end
 
   describe "GET index" do
