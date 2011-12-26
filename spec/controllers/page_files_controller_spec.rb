@@ -66,9 +66,9 @@ describe PageFilesController do
         assigns(:page_file).should be_persisted
       end
 
-      it "redirects to the created page_file" do
+      it "redirects to the parent page" do
         post :create, :page_file => valid_attributes
-        response.should redirect_to(PageFile.last)
+        response.should redirect_to(page_url(valid_attributes[:page_id]))
       end
     end
 
@@ -107,10 +107,10 @@ describe PageFilesController do
         assigns(:page_file).should eq(page_file)
       end
 
-      it "redirects to the page_file" do
+      it "redirects to the parent page" do
         page_file = PageFile.create! valid_attributes
         put :update, :id => page_file.id, :page_file => valid_attributes
-        response.should redirect_to(page_file)
+        response.should redirect_to(page_url(valid_attributes[:page_id]))
       end
     end
 
@@ -141,10 +141,10 @@ describe PageFilesController do
       }.to change(PageFile, :count).by(-1)
     end
 
-    it "redirects to the page_files list" do
+    it "redirects to the parent page" do
       page_file = PageFile.create! valid_attributes
       delete :destroy, :id => page_file.id
-      response.should redirect_to(page_files_url)
+      response.should redirect_to(page_url(valid_attributes[:page_id]))
     end
   end
 

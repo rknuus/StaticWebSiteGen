@@ -28,7 +28,7 @@ class PageFilesController < ApplicationController
 
     respond_to do |format|
       if @page_file.save
-        format.html { redirect_to @page_file, notice: 'Page file was successfully created.' }
+        format.html { redirect_to page_url(@page_file.page_id), notice: 'Page file was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -41,7 +41,7 @@ class PageFilesController < ApplicationController
 
     respond_to do |format|
       if @page_file.update_attributes(params[:page_file])
-        format.html { redirect_to @page_file, notice: 'Page file was successfully updated.' }
+        format.html { redirect_to page_url(@page_file.page_id), notice: 'Page file was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -51,10 +51,11 @@ class PageFilesController < ApplicationController
   # DELETE /page_files/1
   def destroy
     @page_file = PageFile.find(params[:id])
+    page_id = @page_file.page_id
     @page_file.destroy
 
     respond_to do |format|
-      format.html { redirect_to page_files_url }
+      format.html { redirect_to page_url(page_id) }
     end
   end
 end
