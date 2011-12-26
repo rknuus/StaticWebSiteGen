@@ -13,7 +13,7 @@ describe "pages/show.html.erb" do
   it "renders a page without page texts" do
     site = mock_model(Site, :name => 'MyString', :template => 'MyText')
     @page = mock_model(Page, :name => 'MyString', :content => 'MyText',
-      :page_files => nil, :page_texts => nil, :site => site, :site_id => site.id)
+      :page_files => nil, :page_texts => nil, :site_id => site.id)
 
     render
     
@@ -27,29 +27,29 @@ describe "pages/show.html.erb" do
     assert_select 'a', 'Close'
   end
 
-  #FIXME
-  # it "renders a site with two site texts" do
-  #   @site = mock_model(Site, :name => 'MyString', :template => 'MyText',
-  #    :site_files => nil, :site_texts => [
-  #      mock_model(SiteText, :name => 't1', :content => 'text 1'),
-  #      mock_model(SiteText, :name => 't2', :content => 'text 2')
-  #    ]
-  #   )
-  # 
-  #   render
-  #   
-  #   assert_select 'div>table>tr>th', 'Name'
-  #   assert_select 'div>table>tr>th', 'Content'
-  #   assert_select 'div>table>tr>td', 't1'
-  #   assert_select 'div>table>tr>td', 'text 1'
-  #   assert_select 'div>table>tr>td', 't2'
-  #   assert_select 'div>table>tr>td', 'text 2'
-  # end
-  # 
-  # it "renders a site with a truncated site text" do
-  #   @site = mock_model(Site, :name => 'MyString', :template => 'MyText',
-  #    :site_files => nil, :site_texts => [
-  #      mock_model(SiteText, :name => 't1', :content => 'x' * 51)
+  it "renders a page with two page texts" do
+    site = mock_model(Site, :name => 'MyString', :template => 'MyText')
+    @page = mock_model(Page, :name => 'MyString', :content => 'MyText',
+     :page_files => nil, :page_texts => [
+       mock_model(PageText, :name => 't1', :content => 'text 1'),
+       mock_model(PageText, :name => 't2', :content => 'text 2')
+     ], :site_id => site.id
+    )
+  
+    render
+    
+    assert_select 'div>table>tr>th', 'Name'
+    assert_select 'div>table>tr>th', 'Content'
+    assert_select 'div>table>tr>td', 't1'
+    assert_select 'div>table>tr>td', 'text 1'
+    assert_select 'div>table>tr>td', 't2'
+    assert_select 'div>table>tr>td', 'text 2'
+  end
+  
+  # it "renders a page with a truncated page text" do
+  #   @page = mock_model(Page, :name => 'MyString', :template => 'MyText',
+  #    :page_files => nil, :page_texts => [
+  #      mock_model(PageText, :name => 't1', :content => 'x' * 51)
   #    ]
   #   )
   # 
@@ -58,11 +58,12 @@ describe "pages/show.html.erb" do
   #   assert_select 'div>table>tr>td', /\.{3}$/
   # end
   # 
-  # it "renders a site with two site files" do
-  #   @site = mock_model(Site, :name => 'MyString', :template => 'MyText',
-  #    :site_texts => nil, :site_files => [
-  #      mock_model(SiteFile, :name => 'f1', :path => '/foo/bar'),
-  #      mock_model(SiteFile, :name => 'f2', :path => '/foo/baz')
+  #FIXME
+  # it "renders a page with two page files" do
+  #   @page = mock_model(Page, :name => 'MyString', :template => 'MyText',
+  #    :page_texts => nil, :page_files => [
+  #      mock_model(PageFile, :name => 'f1', :path => '/foo/bar'),
+  #      mock_model(PageFile, :name => 'f2', :path => '/foo/baz')
   #    ]
   #   )
   # 

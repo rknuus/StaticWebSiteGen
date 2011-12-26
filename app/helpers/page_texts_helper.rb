@@ -9,6 +9,6 @@ module PageTextsHelper
 
   private
     def page_text_link(name)
-      link_to name, page_path(@page_text.page)
+      link_to name, page_path(@page_text.page_id)
     end
 end

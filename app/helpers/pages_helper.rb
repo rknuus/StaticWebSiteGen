@@ -9,6 +9,6 @@ module PagesHelper
   
 private
   def page_link(name)
-    link_to name, pages_path(:site_id => @page.site.id)
+    link_to name, pages_path(:site_id => @page.site_id)
   end
 end

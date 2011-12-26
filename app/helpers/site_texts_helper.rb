@@ -9,6 +9,6 @@ module SiteTextsHelper
   
 private
   def site_text_link(name)
-    link_to name, site_path(@site_text.site)
+    link_to name, site_path(@site_text.site_id)
   end
 end

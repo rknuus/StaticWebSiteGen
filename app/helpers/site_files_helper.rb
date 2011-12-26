@@ -9,6 +9,6 @@ module SiteFilesHelper
 
 private
   def site_file_link(name)
-    link_to name, site_path(@site_file.site)
+    link_to name, site_path(@site_file.site_id)
   end
 end
