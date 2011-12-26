@@ -4,4 +4,5 @@ class Page < ActiveRecord::Base
 
   belongs_to :site
   has_many :page_texts
+  has_many :page_files
 end
