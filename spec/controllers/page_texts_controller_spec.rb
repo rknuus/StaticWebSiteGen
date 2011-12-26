@@ -66,7 +66,7 @@ describe PageTextsController do
         assigns(:page_text).should be_persisted
       end
 
-      it "redirects to the page index" do
+      it "redirects to the parent page" do
         post :create, :page_text => valid_attributes
         response.should redirect_to(page_url(valid_attributes[:page_id]))
       end
@@ -107,7 +107,7 @@ describe PageTextsController do
         assigns(:page_text).should eq(page_text)
       end
 
-      it "redirects to the page index" do
+      it "redirects to the parent page" do
         page_text = PageText.create! valid_attributes
         put :update, :id => page_text.id, :page_text => valid_attributes
         response.should redirect_to(page_url(valid_attributes[:page_id]))
@@ -141,7 +141,7 @@ describe PageTextsController do
       }.to change(PageText, :count).by(-1)
     end
 
-    it "redirects to the page index" do
+    it "redirects to the parent page" do
       page_text = PageText.create! valid_attributes
       delete :destroy, :id => page_text.id
       response.should redirect_to(page_url(valid_attributes[:page_id]))
