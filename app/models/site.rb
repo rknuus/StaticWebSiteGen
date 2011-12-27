@@ -3,4 +3,5 @@ class Site < ActiveRecord::Base
   
   has_many :site_texts, :dependent => :destroy
   has_many :site_files, :dependent => :destroy
+  has_many :pages, :dependent => :destroy
 end
