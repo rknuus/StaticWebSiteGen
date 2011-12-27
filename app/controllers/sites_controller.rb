@@ -1,3 +1,10 @@
+require 'dimensions'
+require 'erb'
+require 'treetop'
+require 'polyglot'
+Treetop.load 'lib/webmarkup'
+
+
 class SitesController < ApplicationController
 private
   DEFAULT_TEMPLATE = %q{<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -77,7 +84,12 @@ public
 
   # GET /sites/1/generate
   def generate
-    @site = Site.find(params[:id])
+    site = Site.find(params[:id])
+    site.pages.each do |page|
+      text = ERB.new(site.template).result(binding)
+      # File.open(page.texts.filename, 'w') {|file| file.write(text); file.flush}
+      logger.info text
+    end
 
     respond_to do |format|
       format.html { redirect_to sites_url }
@@ -118,5 +130,27 @@ public
     respond_to do |format|
       format.html { redirect_to sites_url }
     end
+  end
+  
+private
+  def render_page(content)
+    parser = WebMarkupParser.new
+    html = parser.parse(content)
+    html.content
+  end
+  
+  def image(file, alternative_text = '', properties='')
+    image_file = "images/#{file}"
+    path = get_path(image_file)
+    raise "image #{path} not found" unless File.file?(path)
+    size = Dimensions.dimensions(path)
+    image_properties = %Q{width="#{size[0]}px" height="#{size[1]}px"}
+    image_properties += ' ' unless properties.blank?
+    image_properties += properties unless properties.blank?
+    return %Q{<img src="#{image_file}" alt="#{alternative_text}" #{image_properties}>}
+  end
+
+  def get_path(file)
+    "page/#{file}"
   end
 end

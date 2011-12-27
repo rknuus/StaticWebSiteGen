@@ -16,4 +16,13 @@ describe Page do
     Page.create(params.merge({ :site_id => 1 }))
     Page.new(params.merge({ :site_id => 2 })).valid?.should eq(true)
   end
+  
+  it "should provide access to texts" do
+    params = { :name => 'foo', :content => 'bar' }
+    p = Page.new(params)
+    p.page_texts.build(:name => 't', :content => 'c')
+    p.save
+    
+    p.texts.t.should eq('c')
+  end
 end
