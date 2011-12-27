@@ -59,10 +59,10 @@ describe SitesController do
   end
 
   describe "GET generate" do
-    it "assigns the requested site as @site" do
+    it "redirects to the site index" do
       site = Site.create! valid_attributes
       get :generate, :id => site.id
-      assigns(:site).should eq(site)
+      response.should redirect_to(sites_url)
     end
   end
   
