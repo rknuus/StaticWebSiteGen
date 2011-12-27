@@ -52,6 +52,7 @@ GEM
     coffee-script-source (1.1.3)
     columnize (0.3.5)
     diff-lcs (1.1.3)
+    dimensions (1.0.0)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -171,6 +172,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coffee-rails (~> 3.1.1)
+  dimensions
   jquery-rails
   launchy
   minitest (>= 2.6.2)
@@ -181,6 +183,7 @@ DEPENDENCIES
   ruby-debug19
   sass-rails (~> 3.1.5)
   sqlite3
+  treetop
   turn (= 0.8.2)
   uglifier (>= 1.0.3)
   webrat
