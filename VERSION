@@ -1,3 +1,8 @@
+== C.8: Generate Site
+add:    generate button or link to site index
+add:    make global site texts and files as well as page local texts and files available to ERb template elements site.files.x and site.texts.y resp. page.files.x and page.texts.y
+add:    generate file for each page in a local directory
+
 == C.7: Create Page File
 add:    create simplified PageFile model with only a file path instead of a BLOB
 add:    view, edit, and delete page_file links on page locals
