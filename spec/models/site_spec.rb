@@ -4,4 +4,24 @@ describe Site do
   it "should be invalid without name or template" do
     Site.new.valid?.should eq(false)
   end
+  
+  it "should provide access to texts" do
+    params = { :name => 'foo', :template => 'bar' }
+    p = Site.new(params)
+    p.site_texts.build(:name => 't', :content => 'c')
+    p.save
+    
+    p.texts.t.should eq('c')
+    p.texts.respond_to?('t').should eq(true)
+  end
+  
+  it "should provide access to files" do
+    params = { :name => 'foo', :template => 'bar' }
+    p = Site.new(params)
+    p.site_files.build(:name => 'f', :path => '/f')
+    p.save
+    
+    p.files.f.should eq('/f')
+    p.files.respond_to?('f').should eq(true)
+  end
 end

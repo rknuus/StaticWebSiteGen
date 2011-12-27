@@ -19,11 +19,10 @@ class SiteFileDispatcher
   end
   
   def method_missing(method, *args)
-    puts "You called: #{method}(#{args.join(', ')})"
     SiteFile.find_by_name_and_site_id(method, @site.id).path
   end
+
   def respond_to?(method)
-    logger.info "You checked: #{self.class.to_s}.#{method}"
     !SiteFile.find_by_name_and_site_id(method, @site.id).nil?
   end
 end

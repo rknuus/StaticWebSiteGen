@@ -19,11 +19,10 @@ class PageFileDispatcher
   end
   
   def method_missing(method, *args)
-    puts "You called: #{method}(#{args.join(', ')})"
     PageFile.find_by_name_and_page_id(method, @page.id).path
   end
+
   def respond_to?(method)
-    logger.info "You checked: #{self.class.to_s}.#{method}"
     !PageFile.find_by_name_and_page_id(method, @page.id).nil?
   end
 end

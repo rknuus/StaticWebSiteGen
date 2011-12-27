@@ -24,5 +24,16 @@ describe Page do
     p.save
     
     p.texts.t.should eq('c')
+    p.texts.respond_to?('t').should eq(true)
+  end
+  
+  it "should provide access to files" do
+    params = { :name => 'foo', :content => 'bar' }
+    p = Page.new(params)
+    p.page_files.build(:name => 'f', :path => '/f')
+    p.save
+    
+    p.files.f.should eq('/f')
+    p.files.respond_to?('f').should eq(true)
   end
 end
