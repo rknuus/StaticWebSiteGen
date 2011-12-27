@@ -19,6 +19,10 @@ describe SitesController do
       get("/sites/1/edit").should route_to("sites#edit", :id => "1")
     end
 
+    it "routes to #generate" do
+      get("/sites/1/generate").should route_to("sites#generate", :id => "1")
+    end
+
     it "routes to #create" do
       post("/sites").should route_to("sites#create")
     end

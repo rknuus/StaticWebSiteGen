@@ -1,7 +1,11 @@
 StaticWebSiteGen::Application.routes.draw do
   root :to => 'sites#index'
 
-  resources :sites
+  resources :sites do
+    member do
+      get 'generate'
+    end
+  end
   resources :site_texts, :except => [:index]
   resources :site_files, :except => [:index]
   resources :pages
