@@ -57,6 +57,14 @@ describe SitesController do
       assigns(:site).should eq(site)
     end
   end
+
+  describe "GET generate" do
+    it "assigns the requested site as @site" do
+      site = Site.create! valid_attributes
+      get :generate, :id => site.id
+      assigns(:site).should eq(site)
+    end
+  end
   
   describe "POST create" do
     describe "with valid params" do

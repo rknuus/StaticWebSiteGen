@@ -75,6 +75,15 @@ public
     @site = Site.find(params[:id])
   end
 
+  # GET /sites/1/generate
+  def generate
+    @site = Site.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to sites_url }
+    end
+  end
+
   # POST /sites
   def create
     @site = Site.new(params[:site])
