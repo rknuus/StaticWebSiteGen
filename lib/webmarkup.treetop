@@ -1,0 +1,234 @@
+require 'erb'
+
+grammar WebMarkup
+  rule file
+    blocklist eof {
+      def content
+        blocklist.content
+      end
+    } /
+    eof {
+      def content
+        ''
+      end
+    }
+  end
+  
+  rule blocklist
+    header newline+ blocklist {
+      def content
+        header.content + "\n" + blocklist.content
+      end
+    } /
+    header newline* {
+      def content
+        header.content
+      end
+    } /
+    preformatted newline 2.. blocklist {
+      def content
+        preformatted.content + "\n" + blocklist.content
+      end
+    } /
+    preformatted newline* {
+      def content
+        preformatted.content
+      end
+    } /
+    paragraph newline 2.. blocklist {
+      def content
+        paragraph.content + "\n" + blocklist.content
+      end
+    } /
+    paragraph newline* {
+      def content
+        paragraph.content
+      end
+    } /
+    newline+ '' {
+      def content
+        "\n"
+      end
+    }
+  end
+  
+  rule header
+    h2 '' {
+      def content
+        h2.content
+      end
+    } /
+    h1 '' {
+      def content
+        h1.content
+      end
+    }
+  end
+  
+  rule h1
+    equal headertext:(!equal .)* equal {
+      def content
+        "<h1>#{ERB::Util.h(headertext.text_value.strip)}</h1>"
+      end
+    }
+  end
+  
+  rule h2
+    equal2 headertext:(!equal2 .)* equal2 {
+      def content
+        "<h2>#{ERB::Util.h(headertext.text_value.strip)}</h2>"
+      end
+    }
+  end
+  
+  rule preformatted
+    pre_begin pretext:(!pre_end .)* pre_end {
+      def content
+        pretext.text_value
+      end
+    }
+  end
+  
+  rule paragraph
+    inline+ {
+      def content
+        "<p>#{elements.collect{ |e| e.content}.join('') }</p>"
+      end
+    }
+    #}
+  end
+  
+  rule inline
+    preformatted_inline '' {
+      def content
+        preformatted_inline.content
+      end
+    } /
+    image '' {
+      def content
+        image.content
+      end
+    } /
+    link '' {
+      def content
+        link.content
+      end
+    } /
+    plain_old_text '' {
+      def content
+        plain_old_text.content
+      end
+    }
+  end
+  
+  rule preformatted_inline
+    preformatted_begin preformattedtext:(!preformatted_end .)+ preformatted_end {
+      def content
+        preformattedtext.text_value
+      end
+    }
+  end
+  
+  rule image
+    image_begin link_file link_title_separator link_title link_end {
+      def content
+        "<img src=\"#{ERB::Util.h(link_file.content)}\" alt=\"#{ERB::Util.h(link_title.content)}\">"
+      end
+    } /
+    image_begin link_file link_end {
+      def content
+        "<img src=\"#{ERB::Util.h(link_file.content)}\">"
+      end
+    }
+  end
+  
+  rule link_file
+    (!(link_end / link_title_separator) .)+ {
+      def content
+        text_value
+      end
+    }
+  end
+  
+  rule link_title
+    (!link_end .)+ {
+      def content
+        text_value
+      end
+    }
+  end
+  
+  rule link
+    link_begin link_file link_title_separator link_title link_end {
+      def content
+        "<a href=\"#{ERB::Util.h(link_file.content)}\">#{ERB::Util.h(link_title.content)}</a>"
+      end
+    } /
+    link_begin link_file link_end {
+      def content
+        h = ERB::Util.h(link_file.content)
+        "<a href=\"#{h}\">#{h}</a>"
+      end
+    }
+  end
+  
+  rule plain_old_text
+    (!(newline / eof / preformatted_inline / link / image ) .)+ {
+      def content
+        ERB::Util.h text_value
+      end
+    }
+  end
+  
+  rule newline
+    "\n\r" / "\n" / "\r"
+  end
+  
+  rule equal2
+    equal 2..2
+  end
+  
+  rule equal
+    '='
+  end
+  
+  rule pre_begin
+    '<nomarkupblock>'
+  end
+  
+  rule pre_end
+    '</nomarkupblock>'
+  end
+  
+  rule preformatted_begin
+    '<nomarkup>'
+  end
+  
+  rule preformatted_end
+    '</nomarkup>'
+  end
+  
+  rule image_begin
+    '[[Image:'
+  end
+  
+  rule link_begin
+    '[['
+  end
+  
+  rule link_title_separator
+    '|'
+  end
+  
+  rule link_end
+    ']]'
+  end
+
+  rule eof
+    !. '' {
+      def content
+        ''
+      end
+    }
+  end
+end
