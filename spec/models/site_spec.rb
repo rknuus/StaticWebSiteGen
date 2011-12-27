@@ -4,6 +4,12 @@ describe Site do
   it "should be invalid without name or template" do
     Site.new.valid?.should eq(false)
   end
+
+  it "name should be unique" do
+    params = { :name => 'unique', :template => 'foo' }
+    Site.create(params)
+    Site.new(params).valid?.should eq(false)
+  end
   
   it "should provide access to texts" do
     params = { :name => 'foo', :template => 'bar' }

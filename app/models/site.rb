@@ -29,6 +29,7 @@ end
 
 class Site < ActiveRecord::Base
   validates :name, :template, :presence => true
+  validates :name, :uniqueness => true
   
   has_many :site_texts, :dependent => :destroy
   has_many :site_files, :dependent => :destroy
