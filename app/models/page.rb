@@ -4,7 +4,7 @@ class PageTextDispatcher
   end
   
   def method_missing(method, *args)
-    #FIXME: throw error if name not found
+    raise MissingError.new('page text', method) unless respond_to?(method)
     PageText.find_by_name_and_page_id(method, @page.id).content
   end
   
@@ -19,6 +19,7 @@ class PageFileDispatcher
   end
   
   def method_missing(method, *args)
+    raise MissingError.new('page file', method) unless respond_to?(method)
     PageFile.find_by_name_and_page_id(method, @page.id).path
   end
 

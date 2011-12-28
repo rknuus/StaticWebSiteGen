@@ -4,7 +4,7 @@ class SiteTextDispatcher
   end
   
   def method_missing(method, *args)
-    #FIXME: throw error if name not found
+    raise MissingError.new('site global text', method) unless respond_to?(method)
     SiteText.find_by_name_and_site_id(method, @site.id).content
   end
 
@@ -19,6 +19,7 @@ class SiteFileDispatcher
   end
   
   def method_missing(method, *args)
+    raise MissingError.new('site global file', method) unless respond_to?(method)
     SiteFile.find_by_name_and_site_id(method, @site.id).path
   end
 

@@ -64,6 +64,20 @@ describe SitesController do
       get :generate, :id => site.id
       response.should redirect_to(sites_url)
     end
+
+    it "does not set notice" do
+      site = Site.create! valid_attributes
+      get :generate, :id => site.id
+      flash[:notice].should be_empty
+    end
+
+    # it "sets a notice" do
+    #   site = Site.create! valid_attributes
+    #   site.pages.build(:name => 'foo',  :content => 'site.texts.x')
+    #   site.save
+    #   get :generate, :id => site.id
+    #   flash[:notice].should_not be_empty
+    # end
   end
   
   describe "POST create" do

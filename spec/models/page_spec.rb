@@ -36,4 +36,24 @@ describe Page do
     p.files.f.should eq('/f')
     p.files.respond_to?('f').should eq(true)
   end
+  
+  it "should raise missing text error" do
+    params = { :name => 'foo', :content => 'bar' }
+    p = Page.new(params)
+    p.save
+    lambda { p.texts.t }.should raise_error(MissingError) do |e|
+      e.type.should eq('page text')
+      e.name.should eq('t')
+    end
+  end
+  
+  it "should raise missing file error" do
+    params = { :name => 'foo', :content => 'bar' }
+    p = Page.new(params)
+    p.save
+    lambda { p.files.f }.should raise_error(MissingError) do |e|
+      e.type.should eq('page file')
+      e.name.should eq('f')
+    end
+  end
 end

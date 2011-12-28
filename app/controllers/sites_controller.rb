@@ -84,15 +84,20 @@ public
 
   # GET /sites/1/generate
   def generate
-    site = Site.find(params[:id])
-    site.pages.each do |page|
-      text = ERB.new(site.template).result(binding)
-      # File.open(page.texts.filename, 'w') {|file| file.write(text); file.flush}
-      logger.info text
+    notice = ''
+    begin
+      site = Site.find(params[:id])
+      site.pages.each do |page|
+        text = ERB.new(site.template).result(binding)
+        # File.open(page.texts.filename, 'w') {|file| file.write(text); file.flush}
+        logger.info text
+      end
+    rescue MissingError => e
+      notice = "missing #{e.type}: #{e.name}"
     end
 
     respond_to do |format|
-      format.html { redirect_to sites_url }
+      format.html { redirect_to sites_url, notice: notice }
     end
   end
 
