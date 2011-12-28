@@ -10,4 +10,8 @@ module SitesHelper
   def generate_link(site)
     link_to 'Generate', generate_site_path(site), method: :get
   end
+  
+  def pages_link(site_id)
+    link_to 'Pages', pages_path(:site_id => site_id), method: :get
+  end
 end

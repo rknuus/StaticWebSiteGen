@@ -15,6 +15,8 @@ describe "pages/index.html.erb" do
   end
 
   it "renders a list of pages" do
+    # site = mock_model(Site, :name => 'Name', :template => 'foo')
+    # site.should_receive(:find).and_return(site)
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
