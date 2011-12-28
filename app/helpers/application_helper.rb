@@ -9,7 +9,7 @@ end
 
 module ApplicationHelper
   def get_textarea_size
-    '120x45'
+    '120x25'
   end
   
   def get_pathfield_size
