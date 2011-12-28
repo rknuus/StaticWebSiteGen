@@ -59,16 +59,16 @@ describe SitesController do
   end
 
   describe "GET generate" do
-    it "redirects to the site index" do
+    it "redirects to the site" do
       site = Site.create! valid_attributes
       get :generate, :id => site.id
-      response.should redirect_to(sites_url)
+      response.should redirect_to(site)
     end
 
-    it "does not set notice" do
+    it "sets notice" do
       site = Site.create! valid_attributes
       get :generate, :id => site.id
-      flash[:notice].should be_empty
+      flash[:notice].should_not be_empty
     end
 
     # it "sets a notice" do
