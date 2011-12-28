@@ -14,7 +14,7 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.name %></td>
-    <td><%= page.content %></td>
+    <td><%= truncate(page.content, :length => 50) %></td>
     <td><%= link_to 'Edit page', edit_page_path(page) %></td>
     <td><%= link_to 'Edit locals', page %></td>
     <td><%= link_to 'Destroy', page, confirm: 'Are you sure?', method: :delete %></td>
