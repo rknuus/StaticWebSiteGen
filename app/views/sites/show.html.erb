@@ -61,4 +61,7 @@
 	<%= link_to 'New site file', new_site_file_path(:site_id => @site) %>
 </div>
 
-<%= close_link %>
+<div id="commands">
+	<%= generate_link(@site) %><br />
+	<%= close_link %>
+</div>
