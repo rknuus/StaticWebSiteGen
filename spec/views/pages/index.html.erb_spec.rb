@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "pages/index.html.erb" do
   before(:each) do
-    assign(:pages, [
+    @pages = assign(:pages, [
       stub_model(Page,
         :name => "Name",
         :content => "MyText"
@@ -12,11 +12,17 @@ describe "pages/index.html.erb" do
         :content => "MyText"
       )
     ])
+    @site = assign(:site, stub_model(Site,
+      :name => "MyString",
+      :template => "MyText"
+    ))
+    @pages.each do |page|
+      page.site = @site
+    end
+    assign(:site_id, @site.id)
   end
 
   it "renders a list of pages" do
-    # site = mock_model(Site, :name => 'Name', :template => 'foo')
-    # site.should_receive(:find).and_return(site)
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2

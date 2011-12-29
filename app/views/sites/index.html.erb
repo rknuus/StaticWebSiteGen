@@ -15,7 +15,7 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.name %></td>
-    <td><%= link_to 'Edit site', edit_site_path(site), method: :get %></td>
+    <td><%= edit_link(site) %></td>
     <td><%= link_to 'Edit globals', site_path(site), method: :get %></td>
     <td><%= pages_link(site.id) %></td>
     <td><%= generate_link(site) %></td>

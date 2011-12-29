@@ -24,12 +24,9 @@
 
 <br />
 
-<%= link_to 'New page', new_page_path(:site_id => @site_id) %>
-
-<br />
-
-
 <div id="commands">
-	<!-- < %= generate_link(Site.find(@site_id)) %><br /> -->
+	<%= link_to 'New page', new_page_path(:site_id => @site_id) %><br />
+	<%= show_link(@site_id) %><br />
+	<%= generate_link(@site_id) %><br />
 	<%= link_to 'Sites', sites_path %>
 </div>
