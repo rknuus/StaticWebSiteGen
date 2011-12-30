@@ -151,8 +151,10 @@ private
   end
   
   def image(file, alternative_text = '', properties='')
-    image_file = "images/#{file}"
-    path = get_path(image_file)
+    # image_file = "images/#{file}"
+    # path = get_path(image_file)
+    image_file = "file://#{file}"
+    path = file
     raise "image #{path} not found" unless File.file?(path)
     size = Dimensions.dimensions(path)
     image_properties = %Q{width="#{size[0]}px" height="#{size[1]}px"}
