@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226192739) do
+ActiveRecord::Schema.define(:version => 20111230142655) do
 
   create_table "page_files", :force => true do |t|
     t.integer  "page_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111226192739) do
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source_path"
   end
 
   create_table "page_texts", :force => true do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20111226192739) do
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source_path"
   end
 
   create_table "site_texts", :force => true do |t|
