@@ -26,7 +26,7 @@ describe PageFilesController do
   def valid_attributes
     @page = stub_model(Page, :id => 1, :name => "MyString", :content => "MyText")
     
-    { :path => '/foo/bar', :name => 'n.n.', :page_id => @page.id }
+    { :name => 'n.n.', :path => 'files/bar', :source_path => '/foo/bar', :page_id => @page.id }
   end
 
   describe "GET show" do
