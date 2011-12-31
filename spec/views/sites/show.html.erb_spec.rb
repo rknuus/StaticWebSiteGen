@@ -57,8 +57,8 @@ describe "sites/show.html.erb" do
   it "renders a site with two site files" do
     @site = mock_model(Site, :name => 'MyString', :template => 'MyText',
      :site_texts => nil, :site_files => [
-       mock_model(SiteFile, :name => 'f1', :path => '/foo/bar'),
-       mock_model(SiteFile, :name => 'f2', :path => '/foo/baz')
+       mock_model(SiteFile, :name => 'f1', :path => 'files/bar', :source_path => '/foo/bar'),
+       mock_model(SiteFile, :name => 'f2', :path => 'files/baz', :source_path => '/foo/baz')
      ]
     )
 
@@ -67,8 +67,10 @@ describe "sites/show.html.erb" do
     assert_select 'div>table>tr>th', 'Name'
     assert_select 'div>table>tr>th', 'Path'
     assert_select 'div>table>tr>td', 'f1'
+    assert_select 'div>table>tr>td', 'files/bar'
     assert_select 'div>table>tr>td', '/foo/bar'
     assert_select 'div>table>tr>td', 'f2'
+    assert_select 'div>table>tr>td', 'files/baz'
     assert_select 'div>table>tr>td', '/foo/baz'
   end
 end

@@ -19,6 +19,7 @@ describe "site_files/edit.html.erb" do
       assert_select "input#site_file_site_id", :name => "site_file[site_id]"
       assert_select "input#site_file_name", :name => "site_file[name]"
       assert_select "input#site_file_path", :name => "site_file[path]"
+      assert_select "input#site_file_source_path", :name => "site_file[source_path]"
     end
   end
 end

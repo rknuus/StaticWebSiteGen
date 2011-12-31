@@ -42,6 +42,7 @@
 			<tr>
 				<th>Name</th>
 				<th>Path</th>
+				<th>Source path</th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -50,6 +51,7 @@
 			<tr>
 				<td><%= site_file.name %></td>
 				<td><%= truncate(site_file.path, :length => 50) %></td>
+				<td><%= truncate(site_file.source_path, :length => 50) %></td>
 				<td><%= link_to 'View', site_file_path(site_file) %></td>
 				<td><%= link_to 'Edit', edit_site_file_path(site_file) %></td>
 				<td><%= link_to 'Destroy', site_file, :confirm => 'Are you sure?', :method => :delete %></td>
