@@ -18,6 +18,7 @@ describe "page_files/edit.html.erb" do
     assert_select "form", :action => page_files_path(@page_file), :method => "post" do
       assert_select "input#page_file_name", :name => "page_file[name]"
       assert_select "input#page_file_path", :name => "page_file[path]"
+      assert_select "input#page_file_source_path", :name => "page_file[source_path]"
       assert_select "input#page_file_page_id", :name => "page_file[page_id]", :type => :hidden
     end
   end
