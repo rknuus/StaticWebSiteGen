@@ -6,13 +6,13 @@ describe SiteFile do
   end
 
   it "name should be unique" do
-    params = { :name => 'unique', :path => '/foo/bar', :site_id => 1 }
+    params = { :name => 'unique', :path => 'files/bar', :source_path => '/foo/bar', :site_id => 1 }
     SiteFile.create(params)
     SiteFile.new(params).valid?.should eq(false)
   end
   
   it "should allow two sites to use same name" do
-    params = { :name => 'unique', :path => '/foo/bar' }
+    params = { :name => 'unique', :path => 'files/bar', :source_path => '/foo/bar' }
     SiteFile.create(params.merge({ :site_id => 1 }))
     SiteFile.new(params.merge({ :site_id => 2 })).valid?.should eq(true)
   end

@@ -24,10 +24,10 @@ describe Site do
   it "should provide access to files" do
     params = { :name => 'foo', :template => 'bar' }
     p = Site.new(params)
-    p.site_files.build(:name => 'f', :path => '/f')
+    p.site_files.build(:name => 'f', :path => 'files/f', :source_path => '/foo/f')
     p.save
     
-    p.files.f.should eq('/f')
+    p.files.f.should eq('files/f')
     p.files.respond_to?('f').should eq(true)
   end
   

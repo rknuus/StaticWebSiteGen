@@ -26,7 +26,7 @@ describe SiteFilesController do
   def valid_attributes
     @site = stub_model(Site, :id => 1, :name => "MyString", :template => "MyText")
 
-    { :path => '/foo/bar', :name => 'n.n.', :site_id => @site.id }
+    { :name => 'n.n.', :path => 'files/bar', :source_path => '/foo/bar', :site_id => @site.id }
   end
 
   describe "GET show" do
