@@ -151,10 +151,8 @@ private
   end
   
   def image(file, alternative_text = '', properties='')
-    # image_file = "images/#{file}"
-    # path = get_path(image_file)
-    image_file = "file://#{file}"
-    path = file
+    image_file = file.path
+    path = file.source_path
     raise "image #{path} not found" unless File.file?(path)
     size = Dimensions.dimensions(path)
     image_properties = %Q{width="#{size[0]}px" height="#{size[1]}px"}
@@ -162,8 +160,8 @@ private
     image_properties += properties unless properties.blank?
     return %Q{<img src="#{image_file}" alt="#{alternative_text}" #{image_properties}>}
   end
-
-  def get_path(file)
-    "page/#{file}"
-  end
+  # 
+  # def get_path(file)
+  #   "page/#{file}"
+  # end
 end

@@ -20,7 +20,7 @@ class PageFileDispatcher
   
   def method_missing(method, *args)
     raise MissingError.new('page file', method) unless respond_to?(method)
-    PageFile.find_by_name_and_page_id(method, @page.id).path
+    PageFile.find_by_name_and_page_id(method, @page.id)
   end
 
   def respond_to?(method)

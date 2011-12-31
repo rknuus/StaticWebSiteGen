@@ -30,10 +30,10 @@ describe Page do
   it "should provide access to files" do
     params = { :name => 'foo', :content => 'bar' }
     p = Page.new(params)
-    p.page_files.build(:name => 'f', :path => 'files/f', :source_path => '/foo/f')
+    file = p.page_files.build(:name => 'f', :path => 'files/f', :source_path => '/foo/f')
     p.save
     
-    p.files.f.should eq('files/f')
+    p.files.f.should eq(file)
     p.files.respond_to?('f').should eq(true)
   end
   

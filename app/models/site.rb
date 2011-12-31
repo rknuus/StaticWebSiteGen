@@ -20,7 +20,7 @@ class SiteFileDispatcher
   
   def method_missing(method, *args)
     raise MissingError.new('site global file', method) unless respond_to?(method)
-    SiteFile.find_by_name_and_site_id(method, @site.id).path
+    SiteFile.find_by_name_and_site_id(method, @site.id)
   end
 
   def respond_to?(method)
