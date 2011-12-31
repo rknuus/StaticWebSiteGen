@@ -95,7 +95,16 @@ public
       site.pages.each do |page|
         text = ERB.new(site.template).result(binding)
         File.open("#{base_path}/#{page.texts.filename}", 'w') {|file| file.write(text); file.flush}
-        # logger.info text
+        page.page_files.each do |file|
+          target_path = "#{base_path}/#{file.path}"
+          FileUtils.mkdir_p File.dirname(target_path)
+          FileUtils.cp file.source_path, target_path
+        end
+      end
+      site.site_files.each do |file|
+        target_path = "#{base_path}/#{file.path}"
+        FileUtils.mkdir_p File.dirname(target_path)
+        FileUtils.cp file.source_path, target_path
       end
       notice = "pages for #{site.name} generated"
     rescue MissingError => e
