@@ -67,11 +67,11 @@ describe SitesController do
       response.should redirect_to(site)
     end
 
-    it "sets notice" do
+    it "sets success notice" do
       site = Site.create! valid_attributes
       get :generate, :id => site.id
       FileUtils.rm_rf SitesController.get_temporary_directory(site)
-      flash[:notice].should_not be_empty
+      flash[:notice].should eq("pages for #{site.name} generated")
     end
     
     it "removes any old directory and then create one" do
