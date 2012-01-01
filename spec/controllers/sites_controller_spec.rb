@@ -82,15 +82,28 @@ describe SitesController do
       Dir.should_receive(:mkdir).with(tmp_path)
       get :generate, :id => site.id
       #note: use Dir.rmdir instead of mocked FileUtils.rm_rf here
-      Dir.rmdir SitesController.get_temporary_directory(site)
+      Dir.rmdir tmp_path
+    end
+    
+    it "creates parent directory and copies site files" do
+      site = Site.create! valid_attributes
+      site.site_files.build(:name => 'foo', :path => 'foo/bar', :source_path => '/foo/bar/baz')
+      site.save
+      tmp_path = SitesController.get_temporary_directory(site)
+      target_path = "#{tmp_path}/foo"
+      FileUtils.should_receive(:mkdir_p).with(target_path)
+      FileUtils.should_receive(:cp).with(site.site_files.first.source_path, "#{target_path}/bar")
+
+      get :generate, :id => site.id
+      FileUtils.rm_rf tmp_path
     end
 
-    # it "sets a notice" do
+    # it "sets an error notice" do
     #   site = Site.create! valid_attributes
     #   site.pages.build(:name => 'foo',  :content => 'site.texts.x')
     #   site.save
     #   get :generate, :id => site.id
-    #   flash[:notice].should_not be_empty
+    #   flash[:notice].should eq(a MissingError)
     # end
   end
   
