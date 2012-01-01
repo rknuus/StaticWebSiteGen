@@ -98,6 +98,7 @@ public
     begin
       site.pages.each do |page|
         text = ERB.new(site.template).result(binding)
+        #FIXME: it is inconsistent if content is not a member of texts but filename is
         File.open("#{base_path}/#{page.texts.filename}", 'w') {|file| file.write(text); file.flush}
         page.page_files.each do |file|
           target_path = "#{base_path}/#{file.path}"
@@ -113,6 +114,8 @@ public
       notice = "pages for #{site.name} generated"
     rescue MissingError => e
       notice = "missing #{e.type}: #{e.name}"
+    # rescue Exception => e
+    #   notice = e.to_s
     end
     
     respond_to do |format|
