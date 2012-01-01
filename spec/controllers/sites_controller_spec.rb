@@ -74,6 +74,16 @@ describe SitesController do
       flash[:notice].should eq("pages for #{site.name} generated")
     end
     
+    it "sets missing file notice" do
+      site = Site.create! valid_attributes
+      site.template = '<%= site.files.f %>'
+      site.pages.build(:name => 'p', :content => 'c')
+      site.save
+      get :generate, :id => site.id
+      FileUtils.rm_rf SitesController.get_temporary_directory(site)
+      flash[:notice].should eq("missing site global file: f")
+    end
+    
     it "removes any old directory and then create one" do
       site = Site.create! valid_attributes
       tmp_path = SitesController.get_temporary_directory(site)
