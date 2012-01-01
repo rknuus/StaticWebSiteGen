@@ -107,14 +107,6 @@ describe SitesController do
       get :generate, :id => site.id
       FileUtils.rm_rf tmp_path
     end
-
-    # it "sets an error notice" do
-    #   site = Site.create! valid_attributes
-    #   site.pages.build(:name => 'foo',  :content => 'site.texts.x')
-    #   site.save
-    #   get :generate, :id => site.id
-    #   flash[:notice].should eq(a MissingError)
-    # end
   end
   
   describe "POST create" do
