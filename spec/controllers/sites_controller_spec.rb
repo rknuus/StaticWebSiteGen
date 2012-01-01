@@ -103,7 +103,18 @@ describe SitesController do
       target_path = "#{tmp_path}/foo"
       FileUtils.should_receive(:mkdir_p).with(target_path)
       FileUtils.should_receive(:cp).with(site.site_files.first.source_path, "#{target_path}/bar")
-
+      get :generate, :id => site.id
+      FileUtils.rm_rf tmp_path
+    end
+    
+    it "creates a file per page" do
+      site = Site.create! valid_attributes
+      site.pages.build(:name => 'p', :content => 'c')
+      site.pages.first.page_texts.build(:name => 'filename', :content => 'p.html')
+      site.save
+      tmp_path = SitesController.get_temporary_directory(site)
+      file_path = "#{tmp_path}/#{site.pages.first.page_texts.first.content}"
+      File.should_receive(:open).with(file_path, 'w')
       get :generate, :id => site.id
       FileUtils.rm_rf tmp_path
     end
