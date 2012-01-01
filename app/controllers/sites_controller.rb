@@ -51,6 +51,10 @@ private
 </html>}
   
 public
+  def self.get_temporary_directory(site)
+    "#{Dir.pwd}/tmp/#{site.name}"
+  end
+
   # GET /sites
   def index
     @sites = Site.all
@@ -86,7 +90,7 @@ public
   # GET /sites/1/generate
   def generate
     site = Site.find(params[:id])
-    base_path = "#{Dir.pwd}/tmp/#{site.name}"
+    base_path = "#{Dir.pwd}/tmp/#{site.name}"  #self.get_temporary_directory(site)
     FileUtils.rm_rf base_path if Dir.exists?(base_path)
     Dir.mkdir base_path
     
