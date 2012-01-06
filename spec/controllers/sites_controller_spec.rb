@@ -118,6 +118,20 @@ describe SitesController do
       get :generate, :id => site.id
       FileUtils.rm_rf tmp_path
     end
+    
+    it "creates parent directory and copies page files" do
+      site = Site.create! valid_attributes
+      site.pages.build(:name => 'p', :content => 'c')
+      site.pages.first.page_texts.build(:name => 'filename', :content => 'p.html')
+      site.pages.first.page_files.build(:name => 'foo', :path => 'foo/bar', :source_path => '/foo/bar/baz')
+      site.save
+      tmp_path = SitesController.get_temporary_directory(site)
+      target_path = "#{tmp_path}/foo"
+      FileUtils.should_receive(:mkdir_p).with(target_path)
+      FileUtils.should_receive(:cp).with(site.pages.first.page_files.first.source_path, "#{target_path}/bar")
+      get :generate, :id => site.id
+      FileUtils.rm_rf tmp_path
+    end
   end
   
   describe "POST create" do
