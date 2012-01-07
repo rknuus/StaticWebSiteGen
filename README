@@ -1,10 +1,15 @@
-== About StaticWebSiteGen
+== About StaticWebSiteGen ==
 
-StaticWebSiteGen is a project under development and intends to simplify life of people less experienced in creation of a web site supported by an experienced web site developer. A web site developer creates a new site and prepares a page template and the less experienced user can then create, edit, and delete pages. The generator only creates static web pages, so there are no dependencies on a database or a runtime framework.
+StaticWebSiteGen is a project under development and intends to simplify life of people less experienced in creation of a web site and which are supported by an experienced web site developer. A web site developer creates a new site and prepares a page template and the less experienced user can then create, edit, and delete pages. The generator only creates static web pages, so there are no dependencies on a database or a runtime framework.
 
 The page content is written in a simplified Mediawiki-alike markup language and the page template in ERb. Navigation links are created by the generator.
 
-== Setup/Update
+== Setup/Update ==
 
+* install Ruby on Rails (version 3.1.1)
+* git clone git@github.com:rknuus/StaticWebSiteGen.git
+* cd into StaticWebSiteGen directory
 * run <code>bundle</code> to install all required gems
 * run <code>rake db:migrate</code> to setup the DB
+* run <code>rails server</code> to start the development server
+* navigate to http://localhost:3000 in your browser to access the application

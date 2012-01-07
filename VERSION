@@ -1,34 +1,34 @@
-== C.8: Generate Site
+== C.8: Generate Site ==
 add:    generate button or link to site index
 add:    make global site texts and files as well as page local texts and files available to ERb template elements site.files.x and site.texts.y resp. page.files.x and page.texts.y
 add:    generate file for each page in a local directory
 
-== C.7: Create Page File
+== C.7: Create Page File ==
 add:    create simplified PageFile model with only a file path instead of a BLOB
 add:    view, edit, and delete page_file links on page locals
 
-== C.6: Create Page Text
+== C.6: Create Page Text ==
 add:    create PageText model
 add:    view, edit, and delete page_text links on page locals
 
-== C.5: Create Page
+== C.5: Create Page ==
 add:    create page model
 add:    link to pages index for site on site index
 add:    edit page content and edit page locals links on page index
 add:    view, edit, and delete page actions
 
-== C.4: Create Site File
+== C.4: Create Site File ==
 add:    view, edit, and delete site_file links on site globals
 fix:    site text names must only be unique for a single site
 change: increased template textarea size
 change: title of site_text pages
 
-== C.3: Create Site Text
+== C.3: Create Site Text ==
 add:    view, edit, and delete site_text links on site globals
 change: replaced site require page and action by show
 
-== C.2: Show Site Requirements
+== C.2: Show Site Requirements ==
 add:    require page and action
 
-== C.1: Create Site
+== C.1: Create Site ==
 add:    CRUD site
