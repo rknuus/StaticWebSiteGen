@@ -287,4 +287,25 @@ class TestWebmarkupParser < Test::Unit::TestCase
     result = parser.parse("foo<nomarkup>[[link]] and [[Image:img.jpg]]</nomarkup>bar")
     assert_equal("<p>foo[[link]] and [[Image:img.jpg]]bar</p>", result.content)
   end
+  
+  def test_real_page
+    text = "== unser apero ==
+    besammlung zum apero von monika und raphael ist um 13:00 uhr am 23. juni 2012 (TBD: besser mind.
+    15min vor zeremonie zum begruessen und damit zeremonie nicht von verspaeteten gestoert wird?) am
+    türlersee (TBD), dem ort, an dem alles begann. bevor wir anstossen und uns auf die häppchen stürzen
+    findet noch eine rund halbstündige zeremonie statt. obwohl wir natürlich auf schönes wetter hoffen,
+    steht fuer alle fälle ein zelt zur verfügung.
+
+    wir freuen uns auf deine [[apero_anmeldung.html|anmeldung]].
+
+    für fragen steht gabi kuratli gerne zur verfügung. tel: TBD, mail: [[mailto:wedding@zeitknoten.ch]].
+
+    === karte ===
+
+    === anfahrt ===
+    ==== von zug ====
+    ==== von zuerich ===="
+    parser = WebMarkupParser.new
+    result = parser.parse(text)
+  end
 end
