@@ -1,8 +1,10 @@
 == About StaticWebSiteGen ==
 
-StaticWebSiteGen is a project under development and intends to simplify life of people less experienced in creation of a web site and which are supported by an experienced web site developer. A web site developer creates a new site and prepares a page template and the less experienced user can then create, edit, and delete pages. The generator only creates static web pages, so there are no dependencies on a database or a runtime framework.
+If you are a (possibly lazy) techie and want to build a web site containing just static content for somone non-geeky like your sister, you might get bored by her repeated requests to change "just that line". So you decide that she should change the content herself.
 
-The page content is written in a simplified Mediawiki-alike markup language and the page template in ERb. Navigation links are created by the generator.
+Instead of trying to teach her HTML, CSS, Javascript etc. you can use this tool to create a site and define a template page in ERb. Then your sister can create as many pages as she likes and fill them with content in a simplified mediawiki-like markup language and embed images of her choice.
+
+The output is pure HTML and includes a div tag holding navigation links. There are no dependencies to a database or a framework whatsoever..
 
 == Setup/Update ==
 
